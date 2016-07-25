@@ -7,18 +7,15 @@
  */
 
 
-  _ = require("lodash");
+var  _ = require("lodash"),
+     bcrypt = require('bcrypt');
 
 module.exports = {
 
   attributes: {
     
       // User login name
-      username: {
-          type: 'string',
-          required: true,
-          unique: true
-        },
+
       firstName: {
           type: 'string',
           required: true
@@ -30,6 +27,17 @@ module.exports = {
       patronymName: {
           type: 'string'
         },
+      email: {
+          type: 'string',
+          email: true,
+          required: true,
+          unique: true
+        },
+      password: {
+          type: 'string',
+          minLength: 6,
+          required: true
+        },        
       // profile photo  
       avatar: {
           type: 'string',
@@ -62,17 +70,7 @@ module.exports = {
       effectiveness: {
           type: 'float'
         },
-      email: {
-          type: 'string',
-          email: true,
-          required: true,
-          unique: true
-        },
-      password: {
-          type: 'string',
-          minLength: 6,
-          required: true
-        },
+
 
       /**
        * Get user's full name
@@ -86,9 +84,27 @@ module.exports = {
        */      
       toJSON: function () {
         var obj = this.toObject();
-        delete obj.password;
+      //  delete obj.password;
         return obj;
-      }       
-  }
+      },
+  },
+
+    
+    beforeCreate: function(user, cb) {
+
+        // encrypt password with salt
+        bcrypt.genSalt(10, function(err, salt) {
+            bcrypt.hash(user.password, salt, function(err, hash) {
+                if (err) {
+                    console.log(err);
+                    cb(err);
+                } else {
+                    user.password = hash;
+                    cb();
+                }
+            });
+        });
+    }
+  
 };
 
