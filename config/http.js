@@ -26,6 +26,13 @@ module.exports.http = {
     passportInit    : require('passport').initialize(),
     passportSession : require('passport').session(),
 
+    setLocals : function(req, res, next){
+        res.locals.currentUser = {fullName: 'Vasya'}// req.user;
+        res.locals.error = 'error'; // req.getFlash('error');
+        res.locals.success = 'success'; //req.getFlash('success');
+        next();
+},
+
   /***************************************************************************
   *                                                                          *
   * The order in which middleware should be run for HTTP request. (the Sails *
@@ -40,6 +47,7 @@ module.exports.http = {
           'passportInit',     
           'passportSession', 
           'myRequestLogger',
+          'setLocals',
           'bodyParser',
           'handleBodyParserError',
           'compress',
