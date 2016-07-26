@@ -12,10 +12,7 @@ var  _ = require("lodash"),
 
 module.exports = {
 
-  attributes: {
-    
-      // User login name
-
+  attributes: {    
       firstName: {
           type: 'string',
           required: true
@@ -25,7 +22,8 @@ module.exports = {
           required: true
         },
       patronymName: {
-          type: 'string'
+          type: 'string',
+          defaultsTo : ''
         },
       email: {
           type: 'string',
@@ -47,9 +45,9 @@ module.exports = {
           type: 'string'
         },
       // team the user belongs to  
-      team: {
-         // model: 'team'
-         type: 'string'
+      teams: {
+          collection: 'team',
+          via: 'members',
         },
       // time at which employee begins working 
       workDayBegin: {
@@ -75,7 +73,8 @@ module.exports = {
       /**
        * Get user's full name
        */
-      fullName: function() {
+
+       fullName : function() {
         return _.compact([this.firstName, this.secondName, this.patronymName ]).join(' ');      
       },
 

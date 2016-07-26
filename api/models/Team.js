@@ -14,7 +14,7 @@ module.exports = {
           },
           members: {
             collection: 'user',
-            via: 'team'
+            via: 'teams'
           },
   }
 };

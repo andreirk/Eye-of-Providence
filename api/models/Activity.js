@@ -10,10 +10,10 @@
  * @prop {number}  attributes.title             - 
  * @prop {text}    attributes.description       - 
  * @prop {number}  attributes.priority          - 
- * @prop {date}    attributes.beginDate           -
- * @prop {date}    attributes.finishDate           -
- * @prop {object}  attributes.author              -
- * @prop {string}  attributes.resourceLink           -   
+ * @prop {date}    attributes.beginDate         -
+ * @prop {date}    attributes.finishDate        -
+ * @prop {object}  attributes.author            -
+ * @prop {string}  attributes.resourceLink      -   
  * 
  */
 

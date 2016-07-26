@@ -1,0 +1,36 @@
+
+
+<div class="container">
+   <header class='jumbotron'>
+       <div class="container">
+           
+           <h1>Добро пожаловать на EOP</h1>    
+           <p>Управление командой</p>
+           <p ><a class='btn btn-primary btn-large' href='/users/new'>Add new user</a></p>
+       </div>
+    
+</header>
+
+<div class="row text-center">
+    <% users.forEach(function(user){%>
+    <div class='col-md-3 col-sm-6'>
+        <div class="thumbnail">
+             <img src="<%= user.avatar %>">
+        </div>
+        <div class="caption">
+             <h4><%=user.fullName %></h4>
+        </div>
+        <p>
+            <a href='/users/<%=user._id %>' class='btn btn-primary'>More info</a>
+        </p>
+
+    </div>
+<% });%>     
+    
+</div>
+
+
+</div>
+
+
+    

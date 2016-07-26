@@ -7,14 +7,16 @@
 
 module.exports = {
     // get all users with public attrs
-	getUsers: function(req, res) {
+	index: function(req, res) {
         User.find().exec(function(err, users) {
             if(err) throw err;
             console.log(users);
             users.forEach(function(element) {
                 element.fullName = element.fullName();
             }, this);
-            res.json(users);
+            console.log(users);
+            res.view('user/index', {users: users})
+            //res.json(users);
         });
     }, 
 
