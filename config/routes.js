@@ -36,18 +36,6 @@ module.exports.routes = {
     view:  'user/index' //'homepage'
   },
 
-  'get /login': {
-       view: 'login'
-  },
-
-  'post /login': 'AuthController.login',
-
-  '/logout': 'AuthController.logout',
-
-  'get /signup': {
-    view: 'signup'
-  }
-
 
   /***************************************************************************
   *                                                                          *
@@ -58,5 +46,33 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
+
+  'get /login': {
+       view: 'login'
+  },
+
+  'post /login': 'AuthController.login',
+
+  '/logout': 'AuthController.logout',
+
+  'get /signup': {
+    view: 'signup'
+  },
+
+/**
+ * UserController 
+ */
+
+ 'post /users': 'UserController.create',
+
+ 'get /users/new' : {
+   view : 'user/new'
+ },
+
+ 'get /users/users.json' : 'UserController.getUsersJson',
+ 'get /users/:id' : 'UserController.show',
+ 'get /users/:id/edit' : 'UserController.edit',
+ 'put /users/:id' : 'UserController.update',
+ 'post /users/avatar' : 'UserController.uploadAvatar',
 
 };
