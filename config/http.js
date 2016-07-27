@@ -27,8 +27,16 @@ module.exports.http = {
     passportSession : require('passport').session(),
 
     setLocals : function(req, res, next){
-        res.locals.currentUser = {fullName: 'Vasya'}// req.user;
+        
+        if(req.user){
+          var user = req.user;
+          res.locals.currentUser = user.toJSON();// req.user;
+        } else {
+          res.locals.currentUser = null;
+        }
+        
         res.locals.error = 'error'; // req.getFlash('error');
+        console.log('!!! user in request: user ' + req.user);
         res.locals.success = 'success'; //req.getFlash('success');
         next();
 },
