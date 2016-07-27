@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+           <h1 style='text-align:center;'>Create a new user</h1>
+            <div class='formdiv'>
+                <form action='/users' method='POST'>
+                        <div class="form-group">
+                            <label for="firstName">First name</label>
+                        <div class="col-md-3">
+                            <input type="text" name="firstName" placeholder="First Name" id='firstName' class="form-control">
+                        </div>  
+                        </div>
+                        <div class="form-group">
+                            <label for="secondName">Last name </label>
+                            <div class="col-md-3">
+                                <input type="text" name="secondName" placeholder="Last Name" id='secondName' class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <div class="col-md-3">
+                                <input type="email" class="form-control" id="email" name='email' placeholder="Email">
+                                </div>   
+                        </div>   
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="col-md-3">
+                                <input type="password" class="form-control" id="password" name='password' placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                </form>
+            <a href='/users'>Go back</a>
+            </div>             
+    </div>
+    </div>

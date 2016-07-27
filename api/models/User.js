@@ -41,14 +41,19 @@ module.exports = {
           type: 'string',
           url: true
         },
-      teamRole: {
-          type: 'string'
+      role: {
+          model: 'userrole',
+          defaultsTo: 1
         },
       // team the user belongs to  
       teams: {
           collection: 'team',
           via: 'members',
         },
+      activities : {
+          collection: 'activity',
+          via: 'author',
+      } , 
       // time at which employee begins working 
       workDayBegin: {
           type: 'time'
@@ -69,12 +74,11 @@ module.exports = {
           type: 'float'
         },
 
-
       /**
        * Get user's full name
        */
 
-       fullName : function() {
+       getFullName :  function() {
         return _.compact([this.firstName, this.secondName, this.patronymName ]).join(' ');      
       },
 
@@ -83,14 +87,13 @@ module.exports = {
        */      
       toJSON: function () {
         var obj = this.toObject();
-      //  delete obj.password;
+        delete obj.password;
+        obj.fullName = this.getFullName();
         return obj;
       },
   },
 
-    
     beforeCreate: function(user, cb) {
-
         // encrypt password with salt
         bcrypt.genSalt(10, function(err, salt) {
             bcrypt.hash(user.password, salt, function(err, hash) {

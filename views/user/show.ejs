@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class='lead'>EOP</p>
+            <div class="list-group">
+                <li class="list-group-item active">info 1</li>
+                <li class="list-group-item">info 2</li>
+                <li class="list-group-item">info 3</li>
+                <li class="list-group-item">info 4</li>
+                <li class="list-group-item">info 5</li>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <img class='img-responsive' src="<%= user.avatar %>">
+                <div class="caption-full">
+                   
+                    <h4f><a href='#'> <h2> <%=  user.fullName %> </h2></a></h4f>
+                    <p><%= user.role %></p>
+                        <a href='/users/<%=user.id%>/edit' class='btn btn-warning'>Edit </a>
+                        <form id='deleteForm' action='/users/<%= user.id %>?_method=DELETE' method='POST' >
+                            <button  class='btn btn-danger'>Delete</button>
+                        </form>
+
+                </div>
+            </div>
+            <div class="well">
+                <div class="text-right">
+                     <a class='btn btn-success' href='/users/<%= user.id %>/activities/new'>Add new activity</a>    
+                </div>
+                <hr> 
+                    <% user.activities.forEach(function(activity){ %>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <strong><%= activity.title %></strong>
+                            <span class="pull-right">
+                                10 days ago
+                            </span>
+                            <p>
+                              <%= activity.description %>
+                            </p>
+                            <% if(currentUser && activity.author.id.equals(currentUser._id)) { %>
+                               <a class='btn btn-xs btn-warning' href='/users/<%=user._id%>/activities/<%=activity._id %>/edit'>Edit</a>
+                                <form id='deleteForm' action='/users/<%=user.id%>/activities/<%=activity.id %>?_method=DELETE' method="POST">
+                                    <button class='btn btn-xs btn-danger' >Delete</button>
+                                </form>
+                            <% } %>
+                        </div>
+                    </div>
+                    <% })%>
+            </div>
+        </div>
+    </div>
+</div>
