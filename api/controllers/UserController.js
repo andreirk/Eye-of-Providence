@@ -83,27 +83,27 @@ module.exports = {
             } 
             console.log(updatedUser);
             if(updatedUser){
-                res.view('user/edit', {user: updatedUser})
+                res.redirect('/users');
             }   
         }); 
     },    
 
     uploadAvatar: function (req, res) {
-
+        var userId = req.param('id');
         req.file('avatar').upload({
             maxBytes: 10000000
         },function whenDone(err, uploadedFiles) {
             if (err) {
-            return res.negotiate(err);
+                return res.negotiate(err);
             }
 
             if (uploadedFiles.length === 0){
-            return res.badRequest('No file was uploaded');
+                return res.badRequest('No file was uploaded here blah');
             }
 
             User.update(req.session.me, {
 
-            avatarUrl: require('util').format('%s/user/avatar/%s', sails.getBaseUrl(), req.session.me),
+            avatarUrl: require('util').format('%s/users/%s/avatar', sails.getBaseUrl(), userId),
 
             avatarFd: uploadedFiles[0].fd
             })
@@ -115,12 +115,12 @@ module.exports = {
     },    
 
     avatar: function (req, res){
-
+        var userId = req.param('id');
         req.validate({
             id: 'string'
         });
 
-        User.findOne(req.param('id')).exec(function (err, user){
+        User.findOne(userId).exec(function (err, user){
             if (err) return res.negotiate(err);
             if (!user) return res.notFound();
 
@@ -143,7 +143,7 @@ module.exports = {
     },
 
     getUsersJson :  function(req, res) {
-        User.find().exec(function(err, users) {
+        User.find().populate('role').populate('teams').populate('activities').exec(function(err, users) {
             if (err) {
                 return res.serverError(err);
             }

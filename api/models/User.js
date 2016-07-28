@@ -37,13 +37,12 @@ module.exports = {
           required: true
         },        
       // profile photo  
-      avatar: {
+      avatarUrl: {
           type: 'string',
           url: true
         },
       role: {
           model: 'userrole',
-          defaultsTo: 1
         },
       // team the user belongs to  
       teams: {
