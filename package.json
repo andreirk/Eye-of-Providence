@@ -19,13 +19,15 @@
     "grunt-contrib-watch": "0.5.3",
     "grunt-sails-linker": "~0.10.1",
     "grunt-sync": "0.2.4",
+    "handlebars": "^4.0.5",
     "include-all": "~0.1.6",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "rc": "1.0.1",
     "sails": "~0.12.3",
     "sails-disk": "~0.10.9",
-    "sails-hook-flash": "^0.2.1"
+    "sails-hook-flash": "^0.2.1",
+    "skipper-disk": "^0.5.4"
   },
   "scripts": {
     "debug": "node debug app.js",
@@ -37,5 +39,8 @@
     "url": "git://github.com/anonymous node/sails user/eyeOfProvidence.git"
   },
   "author": "anonymous node/sails user",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "gulp-ext": "^1.0.0"
+  }
 }
