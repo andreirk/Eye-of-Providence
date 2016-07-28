@@ -73,6 +73,8 @@ module.exports.routes = {
  'get /users/:id' : 'UserController.show',
  'get /users/:id/edit' : 'UserController.edit',
  'put /users/:id' : 'UserController.update',
- 'post /users/avatar' : 'UserController.uploadAvatar',
+ 'post /users/:id/avatar' : 'UserController.uploadAvatar',
+ 'get /users/:id/avatar' : 'UserController.avatar',
+
 
 };
