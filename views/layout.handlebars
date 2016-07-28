@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%=typeof title == 'undefined' ? 'New Sails App' : title%></title>
+    <title>
+        {{#if title}}
+            {{title}}
+        {{else}}
+            New App
+        {{/if}}
+    </title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -9,6 +15,7 @@
     <!--STYLES-->
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/style.css">
     <!--STYLES END-->
   </head>
 
@@ -25,29 +32,20 @@
                     <li></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <% if(!currentUser) { %>
-                     <li><a href="/login">Log in</a></li>
-                     <li><a href="/signup">Sign up</a></li>
-                     <% } else { %>
-                     <li><a>Signed in as  <%= currentUser.fullName %></a></li>
-                     <li><a href="/logout">Log out</a></li>
-                     <% } %>
-
-
-
+                    {{#if currentUser }}
+                        <li><a>Signed in as  {{ currentUser.fullName }}</a></li>
+                        <li><a href="/logout">Log out</a></li>
+                    {{else}}
+                        <li><a href="/login">Log in</a></li>
+                        <li><a href="/signup">Sign up</a></li>
+                     {{/if}}
                 </ul>
             </div>
         </div>
     </nav>    
-    <div class="container">
-        <% if(error && error.length > 0) { %>
-        <div class="alert alert-danger" role="alert"><%= error%></div>    
-        <% } if(success && success.length > 0){ %>
-        <div class="alert alert-success" role="alert"><%= success%></div>    
-        <% } %>
-    </div>
 
-    <%- body %>
+
+    {{{ body }}}
 
 
 

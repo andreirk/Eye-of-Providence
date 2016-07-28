@@ -1,5 +1,4 @@
 
-
 <div class="container">
    <header class='jumbotron'>
        <div class="container">
@@ -12,20 +11,20 @@
 </header>
 
 <div class="row text-center">
-    <% users.forEach(function(user){%>
+    {{#each  users }}
     <div class='col-md-3 col-sm-6'>
         <div class="thumbnail">
-             <img src="<%= user.avatar %>">
+             <img src="{{ this.avatarUrl }}">
         </div>
         <div class="caption">
-             <h4><%=user.fullName %></h4>
+             <h4>{{ this.fullName }}</h4>
         </div>
         <p>
-            <a href='/users/<%=user.id %>' class='btn btn-primary'>More info</a>
+            <a href='/users/{{this.id}}' class='btn btn-primary'>More info</a>
         </p>
 
     </div>
-<% });%>     
+    {{/each}}   
     
 </div>
 

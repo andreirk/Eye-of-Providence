@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <h1 style='text-align:center;'>Edit a User</h1>
+        <div class='formdiv'>
+                 <div class="">
+           	          <img src="{{ user.avatarUrl }}" alt="user avatar" class="img-rounded avatar-img profile-image">
+                 </div>
+            
+                <form action="/users/{{user.id}}/avatar" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <!--<label for="avatar">Upload profile photo</label>-->
+                        <input type="file" id="avatar" name='avatar'>
+                        <p class="help-block">Upload your profile photo</p>
+                        <div class="form-group">
+                            <button class='btn btn-primary'>Upload photo</button>
+                        </div>          
+                    </div>
+                </form>
+            <form action='/users/{{ user.id }}?_method=put ' method='post'>
+                <div class="form-group">
+                   First name  <input class='form-control' type='text' value='{{ user.firstName}}' name='user[firstName]'>
+                </div>
+                <div class="form-group">
+                    Second Name <input class='form-control' type='text' value='{{ user.secondName}}' name='user[secondName]'>
+                </div>
+                <div class="form-group">
+                    Patronym Name <input class='form-control' type='text' value='{{ user.patronymName}}' name='user[patronymName]'>
+                </div>
+                <div class="form-group">
+                    Email <input class='form-control' type='email' value='{{ user.email}}' name='user[email]'>
+                </div>
+                <div class="form-group">
+                   Password  <input class='form-control' type='password' name='user[password]'>
+                </div>
+
+                    <button class='btn btn-lg  btn-block btn-primary'>Submit!</button>
+                </div>               
+            </form>
+        
+            <a href='/users'>Go back</a>
+        </div>
+
+             
+    </div>
+    </div>
