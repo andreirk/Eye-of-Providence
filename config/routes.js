@@ -61,20 +61,56 @@ module.exports.routes = {
 
 /**
  * UserController 
+ * ROUTES 
  */
 
- 'post /users': 'UserController.create',
-
+ // NEW USER FORM 
  'get /users/new' : {
    view : 'user/new'
  },
+ // CREATE 
+ 'post /users': 'UserController.create',
 
- 'get /users/users.json' : 'UserController.getUsersJson',
+ // SHOW ONE 
  'get /users/:id' : 'UserController.show',
+ // EDIT FORM
  'get /users/:id/edit' : 'UserController.edit',
+  // DESTROY
+ 'delete /users/:id' : 'UserController.destroy',
+ // UPDATE
  'put /users/:id' : 'UserController.update',
+
+
+ // UPLOAD AVATAR
  'post /users/:id/avatar' : 'UserController.uploadAvatar',
+ // GET AVATAR
  'get /users/:id/avatar' : 'UserController.avatar',
+
+  // GET JSON 
+ 'get /users/users.json' : 'UserController.getUsersJson',
+
+
+/** 
+ * Activity controller ROUTES
+ */
+
+// CREATE 
+'get /users/:user_id/activities/new' :  'ActivityController.new',
+'post /users/:user_id/activities' : 'ActivityController.create', 
+
+// READ
+'get /users/:user_id/activities' : 'ActivityController.find', 
+'get /users/:user_id/activities/:id' : 'ActivityController.findOne', 
+
+// EDIT
+'get /users/:user_id/activities/:id/edit' : 'ActivityController.edit',
+'put /users/:user_id/activities/:id' : 'ActivityController.update',
+
+// DELETE 
+'delete /users/:user_id/activities/:id/' : 'ActivityController.destroy',
+
+// FIND ALL
+'get /activities' : 'ActivityController.index', 
 
 
 };
