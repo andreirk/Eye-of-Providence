@@ -6,9 +6,8 @@
  */
 
 
-
 /** 
- * @returns array of json objects
+ *  prepare objects to display
  */
 function objectsPrepare(arrOfJObj){
     arrOfJObj.forEach(function(element) {
@@ -19,14 +18,13 @@ function objectsPrepare(arrOfJObj){
 
 module.exports = {
     // get all users with public attrs
-	index: function(req, res) {
+    index: function(req, res) {
         User.find().exec(function(err, users) {
             if(err) throw err;
             users = objectsPrepare(users);
-            console.log('in user controller users are:');
-            console.log(users);
-            res.view('user/index', {users: users})
-           
+            sails.log.info('in user controller users are:');
+            sails.log.info(users);
+            res.view('user/index', {users: users});
         });
     }, 
 
@@ -36,25 +34,29 @@ module.exports = {
             if (err) {
                 return res.serverError(err);
             }
-            console.log('User was created: '+ user.firstName);
+            sails.log.info('User was created: '+ user.firstName);
 
             User.find().exec(function (err, users) {
                 if (err) {
                     return res.serverError(err);
                 }
                 users = objectsPrepare(users);
-                res.view('user/index', {users: users})
+                res.view('user/index', {users: users});
             });
         });    
     }, 
 
     show: function(req, res) {
         var userId = req.param('id');
-        User.findOne({id: userId}).populate('teams').populate('activities').populate('role').exec(function (err, user) {
-            if (err) {
-                return res.serverError(err);
-            } 
-            console.log(user);
+        User.findOne({id: userId})
+            .populate('teams')
+            .populate('activities')
+            .populate('role')
+            .exec(function (err, user) {
+                if (err) {
+                    return res.serverError(err);
+                } 
+            sails.log.info(user);
             if(user){
                 res.view('user/show', {user: user.toJSON()})
             }   
@@ -63,11 +65,15 @@ module.exports = {
 
     edit: function(req, res) {
             var userId = req.param('id');
-            User.findOne({id: userId}).populate('teams').populate('activities').populate('role').exec(function (err, user) {
+            User.findOne({id: userId})
+                .populate('teams')
+                .populate('activities')
+                .populate('role')
+                .exec(function (err, user) {
             if (err) {
                 return res.serverError(err);
             } 
-            console.log(user);
+            sails.log.info(user);
             if(user){
                 res.view('user/edit', {user: user})
             }   
@@ -77,16 +83,33 @@ module.exports = {
     update: function(req, res) {
             var userId = req.param('id');
             var user = req.body.user;
+            sails.log.info('user update cntl, userid is: ' + userId);
             User.update(userId, user).exec(function (err, updatedUser) {
             if (err) {
                 return res.serverError(err);
             } 
-            console.log(updatedUser);
+            sails.log.info(updatedUser);
             if(updatedUser){
                 res.redirect('/users');
             }   
         }); 
+    },
+
+    destroy: function(req, res) {
+            var userId = req.param('id');
+            sails.log.info('in remove action userId is: '+ userId);
+            User.destroy({id :userId} ).exec(function (err) {
+            if (err) {
+                return res.serverError(err);
+            }
+
+            return res.send(200, {
+                    code: 'successful',
+                    message: 'User was successfully deleted',
+                });
+        }); 
     },    
+
 
     uploadAvatar: function (req, res) {
         var userId = req.param('id');
@@ -102,14 +125,12 @@ module.exports = {
             }
 
             User.update(req.session.me, {
-
-            avatarUrl: require('util').format('%s/users/%s/avatar', sails.getBaseUrl(), userId),
-
-            avatarFd: uploadedFiles[0].fd
+                avatarUrl: require('util').format('%s/users/%s/avatar', sails.getBaseUrl(), userId),
+                avatarFd: uploadedFiles[0].fd
             })
-            .exec(function (err){
-            if (err) return res.negotiate(err);
-            return res.ok();
+             .exec(function (err){
+               if (err) return res.negotiate(err);
+               return  res.redirect(`/users/${userId}/edit`);
             });
         });
     },    
@@ -143,15 +164,15 @@ module.exports = {
     },
 
     getUsersJson :  function(req, res) {
-        User.find().populate('role').populate('teams').populate('activities').exec(function(err, users) {
+        User.find().populate('role')
+            .populate('teams')
+            .populate('activities')
+            .exec(function(err, users) {
             if (err) {
                 return res.serverError(err);
             }
-            console.log(users);
             res.json(users);
         });
     }, 
-
-
 };
 
