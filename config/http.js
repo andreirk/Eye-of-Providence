@@ -22,7 +22,7 @@ module.exports.http = {
   ****************************************************************************/
 
   middleware: {
-
+    methodOverride  : require("method-override")('_method'),
     passportInit    : require('passport').initialize(),
     passportSession : require('passport').session(),
 
@@ -35,8 +35,14 @@ module.exports.http = {
           res.locals.currentUser = null;
         }
         
+        res.locals.title = 'Eye Of Providence';
         res.locals.error = 'error'; // req.getFlash('error');
-        console.log('!!! user in request: user ' + req.user);
+        sails.log.info('!!! user in request: user ' + req.user);
+        sails.log.info('request route is: ' + req.route);
+        sails.log.info('request path is: ' + req.path);
+        sails.log.info('request method is: ' + req.method);
+        sails.log.info('request url is: ' + req.url);
+
         res.locals.success = 'success'; //req.getFlash('success');
         next();
 },
