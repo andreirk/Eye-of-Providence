@@ -70,6 +70,14 @@ node_modules
 bower_components
 
 
+dashboard/node_modules/
+dashboard/bower_components/
+dashboard/coverage/
+dashboard/.sass-cache/
+dashboard/.idea/
+dashboard/.tmp/
+dashboard/dist/
+
 
 
 ################################################
