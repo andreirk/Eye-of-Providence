@@ -23,7 +23,7 @@ angular.module('myApp').factory('AuthService',
     }
 
     function getUserStatus() {
-      return $http.get('/user/status')
+      return $http.get('/users/status')
   
       .success(function (data) {
         if(data.status){
@@ -38,13 +38,13 @@ angular.module('myApp').factory('AuthService',
       });
     }
 
-    function login(username, password) {
+    function login(email, password) {
 
  
       var deferred = $q.defer();
 
-      $http.post('/user/login',
-        {username: username, password: password})
+      $http.post('/login',
+        {email: email, password: password})
     
         .success(function (data, status) {
           if(status === 200 && data.status){
@@ -72,7 +72,7 @@ angular.module('myApp').factory('AuthService',
       var deferred = $q.defer();
 
    
-      $http.get('/user/logout')
+      $http.get('/logout')
       
         .success(function (data) {
           user = false;
@@ -89,15 +89,17 @@ angular.module('myApp').factory('AuthService',
 
     }
 
-    function register(username, password) {
+    function register(firstName, secondName, email, password) {
 
-    
       var deferred = $q.defer();
 
-     
-      $http.post('/user/register',
-        {username: username, password: password})
-      
+      $http.post('/users',
+        {
+          email: email,
+          password: password,
+          firstName: firstName,
+          secondName: secondName  
+      })
         .success(function (data, status) {
           if(status === 200 && data.status){
             deferred.resolve();

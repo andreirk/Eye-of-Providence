@@ -3,11 +3,11 @@ var myApp = angular.module('myApp', ['ngRoute']);
 myApp.config(function ($routeProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: 'partials/home.html',
+      templateUrl: '/templates/partials/home.html',
       access: {restricted: true}
     })
     .when('/login', {
-      templateUrl: 'partials/login.html',
+      templateUrl: '/templates/partials/login.html',
       controller: 'loginController',
       access: {restricted: false}
     })
@@ -15,8 +15,8 @@ myApp.config(function ($routeProvider) {
       controller: 'logoutController',
       access: {restricted: true}
     })
-    .when('/register', {
-      templateUrl: 'partials/register.html',
+    .when('/signup', {
+      templateUrl: '/templates/partials/register.html',
       controller: 'registerController',
       access: {restricted: false}
     })

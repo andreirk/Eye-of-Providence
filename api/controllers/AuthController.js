@@ -26,7 +26,7 @@ module.exports = {
             }
             req.logIn(user, function(err) {
                 if (err) res.send(err);
-                return res.redirect('/users/');
+                return res.ok({status: 'Successfuly logged in'});
                  });
 
         })(req, res);

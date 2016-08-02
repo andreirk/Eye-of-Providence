@@ -42,6 +42,7 @@ module.exports.http = {
         sails.log.info('request path is: ' + req.path);
         sails.log.info('request method is: ' + req.method);
         sails.log.info('request url is: ' + req.url);
+        sails.log.info('request POST body is: ' + JSON.stringify(req.body));
 
         res.locals.success = 'success'; //req.getFlash('success');
         next();
@@ -61,9 +62,9 @@ module.exports.http = {
           'passportInit',     
           'passportSession', 
           'myRequestLogger',
-          'setLocals',
           'bodyParser',
           'handleBodyParserError',
+          'setLocals',
           'compress',
           'methodOverride',
           'poweredBy',

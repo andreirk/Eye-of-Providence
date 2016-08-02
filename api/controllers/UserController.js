@@ -19,6 +19,7 @@ function objectsPrepare(arrOfJObj){
 module.exports = {
     // get all users with public attrs
     index: function(req, res) {
+        sails.log.info('User index ctrl');
         User.find().exec(function(err, users) {
             if(err) throw err;
             users = objectsPrepare(users);
@@ -29,6 +30,7 @@ module.exports = {
     }, 
 
     create: function(req, res) {
+        sails.log.info('User create ctrl');
         var usersData = req.body;
         User.create(usersData).exec(function(err, user) {
             if (err) {
@@ -41,12 +43,14 @@ module.exports = {
                     return res.serverError(err);
                 }
                 users = objectsPrepare(users);
-                res.view('user/index', {users: users});
+                // res.view('user/index', {users: users});
+                res.ok({status: "Successfuly registered!"});
             });
         });    
     }, 
 
     show: function(req, res) {
+        sails.log.info('User show ctrl');
         var userId = req.param('id');
         User.findOne({id: userId})
             .populate('teams')
@@ -64,6 +68,7 @@ module.exports = {
     }, 
 
     edit: function(req, res) {
+            sails.log.info('User edit ctrl');
             var userId = req.param('id');
             User.findOne({id: userId})
                 .populate('teams')
@@ -97,7 +102,7 @@ module.exports = {
 
     destroy: function(req, res) {
             var userId = req.param('id');
-            sails.log.info('in remove action userId is: '+ userId);
+            sails.log.info('User ctrl, in remove action userId is: '+ userId);
             User.destroy({id :userId} ).exec(function (err) {
             if (err) {
                 return res.serverError(err);
@@ -112,6 +117,7 @@ module.exports = {
 
 
     uploadAvatar: function (req, res) {
+        sails.log.info('User avatar upload ctrl');
         var userId = req.param('id');
         req.file('avatar').upload({
             maxBytes: 10000000
@@ -136,6 +142,7 @@ module.exports = {
     },    
 
     avatar: function (req, res){
+        sails.log.info('User avatar ctrl');
         var userId = req.param('id');
         req.validate({
             id: 'string'
@@ -164,6 +171,7 @@ module.exports = {
     },
 
     getUsersJson :  function(req, res) {
+        sails.log.info('User get users json ctrl');
         User.find().populate('role')
             .populate('teams')
             .populate('activities')
@@ -174,5 +182,17 @@ module.exports = {
             res.json(users);
         });
     }, 
+
+    getLoginStatus: function (req,res) {
+        sails.log.info('User get user status ctrl');
+        if (!req.isAuthenticated()) {
+            return res.status(200).json({
+                status: false
+                });
+        }
+        res.status(200).json({
+            status: true
+        });
+    }
 };
 

@@ -33,7 +33,7 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view:  'user/index' //'homepage'
+    view:  'homepage'
   },
 
 
@@ -80,6 +80,8 @@ module.exports.routes = {
  // UPDATE
  'put /users/:id' : 'UserController.update',
 
+// get login status for front end auth logic
+'get /users/status' : 'UserController.getLoginStatus',
 
  // UPLOAD AVATAR
  'post /users/:id/avatar' : 'UserController.uploadAvatar',
@@ -87,7 +89,7 @@ module.exports.routes = {
  'get /users/:id/avatar' : 'UserController.avatar',
 
   // GET JSON 
- 'get /users/users.json' : 'UserController.getUsersJson',
+ 'get /users.json' : 'UserController.getUsersJson',
 
 
 /** 
