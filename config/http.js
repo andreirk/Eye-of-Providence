@@ -8,6 +8,7 @@
  * For more information on configuration, check out:
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.http.html
  */
+var express = require('express');
 
 module.exports.http = {
 
@@ -25,7 +26,7 @@ module.exports.http = {
     methodOverride  : require("method-override")('_method'),
     passportInit    : require('passport').initialize(),
     passportSession : require('passport').session(),
-
+    
     setLocals : function(req, res, next){
         
         if(req.user){
@@ -47,6 +48,8 @@ module.exports.http = {
         res.locals.success = 'success'; //req.getFlash('success');
         next();
 },
+
+
 
   /***************************************************************************
   *                                                                          *
@@ -105,6 +108,11 @@ module.exports.http = {
     // bodyParser: require('skipper')({strict: true})
 
   },
+
+  //dashboardStatic
+   customMiddleware:function (app) {
+      app.use('/dashboard/', express.static(process.cwd() + '/dashboard/.tmp/serve/app'));
+    },
 
   /***************************************************************************
   *                                                                          *
