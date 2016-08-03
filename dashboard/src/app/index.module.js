@@ -20,7 +20,10 @@
             // Quick panel
             'app.quick-panel',
 
-            // Sample
-            'app.sample'
+            // Sample - Activity
+            'app.activity',
+
+            // Pages
+            'app.pages',
         ]);
 })();
