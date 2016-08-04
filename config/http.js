@@ -109,10 +109,7 @@ module.exports.http = {
 
   },
 
-  //dashboardStatic
-   customMiddleware:function (app) {
-      app.use('/dashboard/', express.static(process.cwd() + '/dashboard/.tmp/serve/app'));
-    },
+
 
   /***************************************************************************
   *                                                                          *

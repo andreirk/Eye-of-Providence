@@ -13,7 +13,7 @@ var gutil = require('gulp-util');
  */
 exports.paths = {
     src : 'src',
-    dist: 'dist',
+    dist: '../assets/dashboard',
     tmp : '.tmp',
     e2e : 'e2e'
 };
