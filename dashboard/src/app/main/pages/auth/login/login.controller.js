@@ -7,7 +7,7 @@
         .controller('LoginController', LoginController);
 
     /** @ngInject */
-    function LoginController(msApi)
+    function LoginController(msApi, $location)
     {
         var vm = this;
         // Data
@@ -26,11 +26,20 @@
       msApi.request('app.login@login', loginParams, 
       // SUCCESS
       function (response){
-          console.log(response.data);
+          if(response.status){
+            $location.path('/pages/profile');
+            vm.disabled = false;
+            // vm.form = {};
+          };
+          console.log('Server respond with data: ' + response.status);
       }, 
       // ERROR
       function (response){
-          console.error(response.data);
+          vm.error = true;
+          vm.errorMessage = "Invalid username and/or password";
+          vm.disabled = false;
+          vm.loginForm = {};
+          console.error('Error in login ctrl and data: ' + response.status);
       });
 
     //   AuthService.login(vm.loginForm.email, vm.loginForm.password)

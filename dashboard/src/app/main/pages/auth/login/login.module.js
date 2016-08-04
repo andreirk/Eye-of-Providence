@@ -30,7 +30,7 @@
         msApiProvider.register('app.login', 
         [
         // url
-            'http://localhost:1337/login',
+            '/login',
         // paramDefaults
             null,
         // actions
