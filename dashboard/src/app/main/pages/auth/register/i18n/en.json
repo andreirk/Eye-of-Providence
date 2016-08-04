@@ -1,6 +1,8 @@
 {
     "REGISTER": {
         "TITLE": "Create an account",
+        "FIRST_NAME": "First name",
+        "LAST_NAME": "Last name",
         "NAME": "Name",
         "EMAIL": "Email",
         "PASSWORD": "Password",
