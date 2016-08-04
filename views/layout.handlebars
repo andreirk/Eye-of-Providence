@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
   <head>
     <title>
         {{#if title}}
@@ -34,10 +34,10 @@
                 <ul class="nav navbar-nav navbar-right">
                     {{#if currentUser }}
                         <li><a>Signed in as  {{ currentUser.fullName }}</a></li>
-                        <li><a href="/logout">Log out</a></li>
+                        <li><a href="/#/logout">Log out</a></li>
                     {{else}}
-                        <li><a href="/login">Log in</a></li>
-                        <li><a href="/signup">Sign up</a></li>
+                        <li><a href="/#/login">Log in</a></li>
+                        <li><a href="/#/signup">Sign up</a></li>
                      {{/if}}
                 </ul>
             </div>
