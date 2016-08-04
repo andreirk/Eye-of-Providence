@@ -7,7 +7,7 @@
         .config(config);
 
     /** @ngInject */
-    function config($stateProvider, $translatePartialLoaderProvider, msNavigationServiceProvider)
+    function config($stateProvider, $translatePartialLoaderProvider, msNavigationServiceProvider, msApiProvider)
     {
         // State
         $stateProvider.state('app.pages_auth_register', {
@@ -25,6 +25,20 @@
             bodyClass: 'register'
         });
 
+        msApiProvider.register('app.register', 
+        [
+        // url
+            '/users',
+        // paramDefaults
+            null,
+        // actions
+            {
+                register: {
+                    method:'POST'
+                }
+            }
+        
+        ]);
         // Translation
         $translatePartialLoaderProvider.addPart('app/main/pages/auth/register');
 

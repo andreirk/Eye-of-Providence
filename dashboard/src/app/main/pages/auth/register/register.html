@@ -2,19 +2,29 @@
     <div id="register-form-wrapper" layout="column" layout-align="center center">
         <div id="register-form" class="md-whiteframe-8dp">
             <div class="logo md-accent-bg">
-                <span>F</span>
+                <span>EOP</span>
             </div>
 
             <div class="title" translate="REGISTER.TITLE">Create an account</div>
 
-            <form name="registerForm" novalidate>
+            <form name="registerForm" novalidate ng-submit="vm.register()"> 
                 <md-input-container class="md-block" md-no-float>
-                    <input name="username" ng-model="vm.form.username" placeholder="Name"
-                           translate translate-attr-placeholder="REGISTER.NAME"
+                    <input name="firstName" ng-model="vm.form.firstName" placeholder="First name"
+                           translate translate-attr-placeholder="REGISTER.FIRST_NAME"
                            required>
-                    <div ng-messages="registerForm.username.$error" role="alert">
+                    <div ng-messages="registerForm.firstName.$error" role="alert">
                         <div ng-message="required">
-                            <span translate="REGISTER.ERRORS.USERNAME_REQUIRED">Username field is required</span>
+                            <span translate="REGISTER.ERRORS.USERNAME_REQUIRED">First name field is required</span>
+                        </div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" md-no-float>
+                    <input name="secondName" ng-model="vm.form.secondName" placeholder="Last name"
+                           translate translate-attr-placeholder="REGISTER.LAST_NAME"
+                           required>
+                    <div ng-messages="registerForm.secondName.$error" role="alert">
+                        <div ng-message="required">
+                            <span translate="REGISTER.ERRORS.USERNAME_REQUIRED">Last name field is required</span>
                         </div>
                     </div>
                 </md-input-container>
