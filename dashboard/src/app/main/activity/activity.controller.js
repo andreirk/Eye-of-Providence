@@ -12,7 +12,7 @@
         var vm = this;
 
         // Data
-        vm.helloText = ActivityData.data.helloText;
+        vm.list = ActivityData.data.list;
 
         // Methods
 

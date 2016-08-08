@@ -99,6 +99,8 @@ module.exports.routes = {
 // CREATE 
 'get /users/:user_id/activities/new' :  'ActivityController.new',
 'post /users/:user_id/activities' : 'ActivityController.create', 
+'post /activities' : 'ActivityController.create', 
+
 
 // READ
 'get /users/:user_id/activities' : 'ActivityController.find', 
@@ -112,7 +114,7 @@ module.exports.routes = {
 'delete /users/:user_id/activities/:id/' : 'ActivityController.destroy',
 
 // FIND ALL
-'get /activities' : 'ActivityController.index', 
+'get /activities.json' : 'ActivityController.index', 
 
 
 };

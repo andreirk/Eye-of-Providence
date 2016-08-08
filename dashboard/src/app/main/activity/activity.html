@@ -1,3 +1,7 @@
-<h1>
-    {{vm.helloText}}
-</h1>
+
+<ul>
+    <li ng-repeat="activity in vm.list">
+       Title: {{activity.title}} <br>
+       Description: {{activity.description}}
+    </li>
+</ul>

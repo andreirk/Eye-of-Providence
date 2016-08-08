@@ -1,5 +1,19 @@
 {
     "data": {
-        "helloText": "Hello, I'm a activity !"
+        "helloText": "Hello, I'm a activity !",
+        "list": [
+
+            {
+                "title": "New activity",
+                "description": "Activity description",
+                "priority": 3,
+                "beginDate": "12/05/15",
+                "finishDate": "30/04/16",
+                "author": "John Doe",
+                "resourceLink": "htttp://link.ru"
+            }
+        ]
     }
 }
+
+    

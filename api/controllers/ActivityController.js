@@ -21,7 +21,7 @@ module.exports = {
         var userId = req.param('user_id'),
             activityData = req.body;
 
-        activityData.author = userId;
+        activityData.author = userId || activityData.author;
 
         Activity.create(activityData).exec(function (err, createdActivity) {
             if(err){
@@ -39,6 +39,7 @@ module.exports = {
 
     // FIND by USER ACTION
     find: function (req, res) {
+        sails.log.info('in activities find');
         var userId = req.param('user_id');
 
         Activity.find({author: userId}).exec(function (err, activities) {
@@ -51,9 +52,9 @@ module.exports = {
         });
     },  
 
-    // FIND by USER ACTION
+    //  All activities ACTION
     index: function (req, res) {
-        
+        sails.log.info('in activities index');
         Activity.find().exec(function (err, activities) {
             if(err){
                  return res.serverError(err);
