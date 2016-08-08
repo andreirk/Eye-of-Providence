@@ -19,6 +19,8 @@
       vm.disabled = true;
      
      var registerParams = {
+         firstName : vm.form.firstName,
+         secondName : vm.form.secondName,
          email: vm.form.email,
          password: vm.form.password
      }
