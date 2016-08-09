@@ -15,11 +15,11 @@ module.exports = {
   attributes: {    
       firstName: {
           type: 'string',
-          required: true
+         
         },
       secondName: {
           type: 'string',
-          required: true
+         
         },
       patronymName: {
           type: 'string',

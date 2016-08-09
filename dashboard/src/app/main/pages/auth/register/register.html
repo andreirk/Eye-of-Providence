@@ -8,26 +8,7 @@
             <div class="title" translate="REGISTER.TITLE">Create an account</div>
 
             <form name="registerForm" novalidate ng-submit="vm.register()"> 
-                <md-input-container class="md-block" md-no-float>
-                    <input name="firstName" ng-model="vm.form.firstName" placeholder="First name"
-                           translate translate-attr-placeholder="REGISTER.FIRST_NAME"
-                           required>
-                    <div ng-messages="registerForm.firstName.$error" role="alert">
-                        <div ng-message="required">
-                            <span translate="REGISTER.ERRORS.USERNAME_REQUIRED">First name field is required</span>
-                        </div>
-                    </div>
-                </md-input-container>
-                <md-input-container class="md-block" md-no-float>
-                    <input name="secondName" ng-model="vm.form.secondName" placeholder="Last name"
-                           translate translate-attr-placeholder="REGISTER.LAST_NAME"
-                           required>
-                    <div ng-messages="registerForm.secondName.$error" role="alert">
-                        <div ng-message="required">
-                            <span translate="REGISTER.ERRORS.USERNAME_REQUIRED">Last name field is required</span>
-                        </div>
-                    </div>
-                </md-input-container>
+
 
                 <md-input-container class="md-block" md-no-float>
                     <input type="email" name="email" ng-model="vm.form.email" placeholder="Email"
@@ -66,13 +47,6 @@
                     </div>
                 </md-input-container>
 
-                <div class="terms" layout="row" layout-align="center center">
-                    <md-checkbox name="terms" ng-model="data.cb1" aria-label="I read and accept" required></md-checkbox>
-                    <div layout="row" layout-sm="column" layout-align="start center">
-                        <span translate="REGISTER.READ_ACCEPT">I read and accept</span>
-                        <a href="#" class="md-accent-color" translate="REGISTER.TERMS_COND">terms and conditions</a>
-                    </div>
-                </div>
 
                 <md-button type="submit" class="md-raised md-accent submit-button" aria-label="CREATE MY ACCOUNT"
                            ng-disabled="registerForm.$invalid || registerForm.$pristine"
