@@ -1,0 +1,81 @@
+
+    <div layout="row">
+
+        <!-- BASIC FORM -->
+        <div class="form-wrapper md-whiteframe-1dp" flex="60">
+
+            <form name="basicForm" class="md-form" novalidate>
+
+                <div class="form-title">Edit your profile data</div>
+
+                <div layout="column" layout-gt-sm="row">
+                    <md-input-container flex>
+                         <label>Firstname</label>
+                        <input type="text" name="firstname" ng-model="vm.basicForm.firstname"
+                                placeholder="{{vm.basicForm.firstname}}"
+                                required>
+                        <div ng-messages="basicForm.firstname.$error"
+                                role="alert">
+                            <div ng-message="required">
+                                <span>Firstname field is required.</span>
+                            </div>
+                        </div>
+                    </md-input-container>
+
+                </div>
+                <div layout="column" layout-gt-sm="row">
+                    <md-input-container flex>
+                        <label>Lastname</label>
+                        <input type="text" name="lastname" ng-model="vm.basicForm.lastname" 
+                                placeholder="{{vm.basicForm.lastname}}"
+                                required>
+                        <div ng-messages="basicForm.lastname.$error"
+                                role="alert">
+                            <div ng-message="required">
+                                <span>Lastname field is required.</span>
+                            </div>
+                        </div>
+                    </md-input-container>
+                </div>
+
+            
+                <md-input-container class="md-block">
+                <!-- Use floating placeholder instead of label -->
+                 <label>Email</label>
+                <input ng-model="vm.basicForm.email" type="email" placeholder="{{vm.basicForm.email}}" ng-required="true">
+                </md-input-container>
+
+                <md-input-container md-no-float class="md-block">
+                   <input ng-model="user.address" type="text" placeholder="Address" >
+                </md-input-container>
+
+                <md-input-container  class="md-block">
+                    <label>Birthday</label>
+                    <md-datepicker ng-model="vm.basicForm.birthDay"
+                         md-min-date="vm.basicForm.minDate" md-max-date="vm.basicForm.maxDate">
+                    </md-datepicker>
+                </md-input-container>
+        
+
+                <md-input-container class="md-block">
+                    <label>Biography</label>
+                    <textarea ng-model="vm.basicForm.biography" md-maxlength="150" max-rows="5"></textarea>
+                </md-input-container>
+
+                <md-button type="submit" class="md-raised md-accent" aria-label="Submit"
+                            ng-disabled="basicForm.$invalid || basicForm.$pristine">
+                    Submit
+                </md-button>
+            </form>
+
+        </div>
+        <!-- / BASIC FORM -->
+
+            <!-- BASIC FORM DATA -->
+            <div class="form-wrapper form-data-wrapper md-whiteframe-1dp" flex="40">
+                <div class="form-title">Form ng-model data for TEST </div>
+                <div class="json-data-wrapper">
+                    <pre>{{vm.basicForm | json}}</pre>
+                </div>
+            </div>
+            <!-- / BASIC FORM DATA -->

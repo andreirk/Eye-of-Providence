@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('app.pages.profile', [])
+        .module('app.pages.profile', ['ngStorage'])
         .config(config);
 
     /** @ngInject */

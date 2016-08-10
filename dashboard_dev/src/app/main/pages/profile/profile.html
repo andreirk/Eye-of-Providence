@@ -5,9 +5,10 @@
         <div class="user-info" layout="column" layout-align="center center" layout-gt-sm="row" layout-align-gt-sm="start center">
             <img class="profile-image avatar huge" src="assets/images/avatars/katherine.jpg">
 
-            <div class="name">Katherine Wilson</div>
+            <div class="name">
+                {{vm.user.firstName && vm.user.lastName ? "vm.user.firstName" +" "+"vm.user.lastName" : 'User without name'}}
+            </div>
         </div>
-
 
     </div>
     <!-- / HEADER -->
@@ -36,6 +37,17 @@
                     </md-content>
                 </md-tab-body>
             </md-tab>
+
+            <md-tab>
+                <md-tab-label>
+                    <span >Edit</span>
+                </md-tab-label>
+                <md-tab-body>
+                    <md-content class="photos-videos-tab"
+                                ng-include="'app/main/pages/profile/tabs/edit/edit.html'">
+                    </md-content>
+                </md-tab-body>
+            </md-tab>            
             <md-tab>
 
                 <md-tab-body>
