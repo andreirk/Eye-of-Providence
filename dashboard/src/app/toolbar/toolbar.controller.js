@@ -7,7 +7,7 @@
         .controller('ToolbarController', ToolbarController);
 
     /** @ngInject */
-    function ToolbarController($rootScope, $q, $state, $timeout, $mdSidenav, $translate, $mdToast, msNavigationService)
+    function ToolbarController($rootScope, $q, $state, $timeout, $mdSidenav, $translate, $mdToast, $location, msNavigationService, msApi)
     {
         var vm = this;
 
@@ -116,7 +116,22 @@
          */
         function logout()
         {
-            // Do logout here..
+            msApi.request('app.logout@get', 
+            // SUCCESS
+            function (response){
+                if(response.status){
+                    $location.path('/pages/login');
+                   
+                };
+                console.log('Server respond with data: ' + response.status);
+            }, 
+            // ERROR
+            function (response){
+                vm.error = true;
+                vm.errorMessage = "Invalid username and/or password";
+                vm.disabled = false;
+                console.error('Error in logout ctrl and data: ' + response.status);
+            });
         }
 
         /**

@@ -34,6 +34,6 @@ module.exports = {
 
     logout: function(req, res) {
         req.logout();
-        res.redirect('/');
+        res.ok({status: 'Successfuly logged out'});
     }
 };

@@ -7,8 +7,13 @@
         .config(config);
 
     /** @ngInject */
-    function config($translatePartialLoaderProvider)
+    function config($translatePartialLoaderProvider,msApiProvider)
     {
         $translatePartialLoaderProvider.addPart('app/toolbar');
+
+       msApiProvider.register('app.logout', 
+        [
+            '/logout',        
+        ]);        
     }
 })();
