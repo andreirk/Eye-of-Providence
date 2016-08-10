@@ -7,7 +7,7 @@
         .controller('LoginController', LoginController);
 
     /** @ngInject */
-    function LoginController(msApi, $location)
+    function LoginController(msApi,$localStorage, $location)
     {
         var vm = this;
         // Data
@@ -26,12 +26,14 @@
       msApi.request('app.login@login', loginParams, 
       // SUCCESS
       function (response){
-          if(response.status){
-            $location.path('/pages/profile');
+          if(response.status){  
             vm.disabled = false;
+            $localStorage.user = response.data.user;
+            console.log( $localStorage.user);
+            $location.path('/pages/profile');
             // vm.form = {};
           };
-          console.log('Server respond with data: ' + response.status);
+          console.log('Server respond with data: ' + response.data);
       }, 
       // ERROR
       function (response){

@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('app.pages.auth.login', [])
+        .module('app.pages.auth.login', ['ngStorage'])
         .config(config);
 
     /** @ngInject */

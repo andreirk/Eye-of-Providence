@@ -26,7 +26,13 @@ module.exports = {
             }
             req.logIn(user, function(err) {
                 if (err) res.send(err);
-                return res.ok({status: 'Successfuly logged in'});
+                return res.ok(
+                        {
+                            status: 'Successfuly logged in',
+                            data: {
+                                user: user
+                            }
+                        });
                  });
 
         })(req, res);
