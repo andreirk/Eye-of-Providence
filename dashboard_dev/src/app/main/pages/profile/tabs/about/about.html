@@ -109,35 +109,6 @@
             </div>
         </div>
 
-        <div class="profile-box groups md-whiteframe-1dp" layout="column">
-            <header class="md-accent-bg" layout="row" layout-align="space-between center">
-                <div class="title" translate="PROFILE.JOINED_GROUPS">Joined Groups</div>
-                <div class="more secondary-text">
-                    <span translate="PROFILE.SEE">See</span>
-                    <span>6</span>
-                    <span translate="PROFILE.MORE">More</span>
-                </div>
-            </header>
-
-            <div class="content">
-                <div class="group" ng-repeat="group in vm.about.groups" layout="row"
-                     layout-align="space-between center">
-                    <div layout="row" layout-align="start center">
-                        <img ng-src="{{group.logo}}" class="logo" alt="{{group.name}}"/>
-
-                        <div>
-                            <div class="name">{{group.name}}</div>
-                            <div class="category">{{group.category}}</div>
-                            <div class="members">{{group.members}} people</div>
-                        </div>
-                    </div>
-                    <md-button class="md-icon-button" aria-label="more" translate
-                               translate-attr-aria-label="PROFILE.MORE">
-                        <md-icon md-font-icon="icon-dots-vertical"></md-icon>
-                    </md-button>
-                </div>
-            </div>
-        </div>
     </div>
 
 </div>
