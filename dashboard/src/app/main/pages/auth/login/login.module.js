@@ -49,7 +49,8 @@
         msNavigationServiceProvider.saveItem('pages.auth', {
             title : 'Authentication',
             icon  : 'icon-lock',
-            weight: 1
+            weight: 1,
+            hidden: function(){return true}
         });
 
         msNavigationServiceProvider.saveItem('pages.auth.login', {
