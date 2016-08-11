@@ -72,7 +72,11 @@ module.exports.routes = {
  'post /users': 'UserController.create',
 
  // SHOW ONE 
- 'get /users/:id' : 'UserController.show',
+  // 'get /users/:id' : 'UserController.show',
+  // the same as above but use json for SPA
+   'get /users/:id' : 'UserController.findOne',
+
+
  // EDIT FORM
  'get /users/:id/edit' : 'UserController.edit',
   // DESTROY

@@ -67,6 +67,28 @@ module.exports = {
         });  
     }, 
 
+    findOne: function(req, res) {
+        sails.log.info('User find one ctrl');
+        var userId = req.param('id');
+        User.findOne({id: userId})
+            .populate('teams')
+            .populate('activities')
+            .populate('role')
+            .exec(function (err, user) {
+                if (err) {
+                    return res.serverError(err);
+                } 
+            sails.log.info(user);
+            if(user){
+                res.json(user.toJSON())
+            } else {
+                res.json({message:"No user found"})
+            }
+
+        });  
+    }, 
+
+    // show user edit form with data to edit
     edit: function(req, res) {
             sails.log.info('User edit ctrl');
             var userId = req.param('id');
@@ -85,18 +107,23 @@ module.exports = {
         }); 
     }, 
 
+    // recive post data from edit form and update user in db
     update: function(req, res) {
             var userId = req.param('id');
             var user = req.body.user;
-            sails.log.info('user update cntl, userid is: ' + userId);
+            sails.log.info('user update cntl, userid is: ' + userId + "user is: " + JSON.stringify(user));
+            sails.log.info(req.body);
             User.update(userId, user).exec(function (err, updatedUser) {
-            if (err) {
-                return res.serverError(err);
-            } 
-            sails.log.info(updatedUser);
-            if(updatedUser){
-                res.redirect('/users');
-            }   
+                if (err) {
+                    return res.serverError(err);
+                } 
+                sails.log.info(updatedUser);
+                if(updatedUser){
+                    res.send(200,{
+                        message: 'Successfuly updated user', 
+                        user: updatedUser
+                    });
+                }   
         }); 
     },
 
