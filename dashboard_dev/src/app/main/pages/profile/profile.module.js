@@ -3,7 +3,14 @@
     'use strict';
 
     angular
-        .module('app.pages.profile', ['ngStorage'])
+        .module('app.pages.profile', [
+                    'ngStorage',
+                    "ngMaterial",
+                    "ngAnimate",
+                    "ngAria",
+                    'mdPickers',
+                    "ngMessages",
+                   ])
         .config(config);
 
     /** @ngInject */
@@ -29,7 +36,11 @@
                 PhotosVideos: function (msApi)
                 {
                     return msApi.resolve('profile.photosVideos@get');
-                }
+                },
+                // UserData: function (msApi)
+                // {
+                //     return msApi.resolve('profile.userData@get');
+                // }
             },
             bodyClass: 'profile'
         });
@@ -41,6 +52,7 @@
         msApiProvider.register('profile.timeline', ['app/data/profile/timeline.json']);
         msApiProvider.register('profile.about', ['app/data/profile/about.json']);
         msApiProvider.register('profile.photosVideos', ['app/data/profile/photos-videos.json']);
+    //    msApiProvider.register('profile.userData', ['http://localhost:1337/users/:id']);
 
         // Navigation
         msNavigationServiceProvider.saveItem('pages.profile', {
