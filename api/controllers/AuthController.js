@@ -26,6 +26,7 @@ module.exports = {
             }
             req.logIn(user, function(err) {
                 if (err) res.send(err);
+                sails.log.info(user);
                 return res.ok(
                         {
                             status: 'Successfuly logged in',
@@ -33,6 +34,7 @@ module.exports = {
                                 user: user
                             }
                         });
+                        
                  });
 
         })(req, res);

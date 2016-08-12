@@ -37,6 +37,17 @@
                 {
                     return msApi.resolve('profile.photosVideos@get');
                 },
+ 
+                Teams: function (apiResolver)
+                {   
+                    return apiResolver.resolve('teams.list@get');
+                },
+
+                Roles: function (apiResolver)
+                {
+                    return apiResolver.resolve('roles.list@get');
+                },
+                   
                 // UserData: function (msApi)
                 // {
                 //     return msApi.resolve('profile.userData@get');
@@ -52,7 +63,6 @@
         msApiProvider.register('profile.timeline', ['app/data/profile/timeline.json']);
         msApiProvider.register('profile.about', ['app/data/profile/about.json']);
         msApiProvider.register('profile.photosVideos', ['app/data/profile/photos-videos.json']);
-    //    msApiProvider.register('profile.userData', ['http://localhost:1337/users/:id']);
 
         // Navigation
         msNavigationServiceProvider.saveItem('pages.profile', {

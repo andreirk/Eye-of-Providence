@@ -7,54 +7,70 @@
         .controller('ProfileController', ProfileController);
 
     /** @ngInject */
-    function ProfileController($localStorage,Timeline, About, msApi,$mdpDatePicker, $mdpTimePicker)
+    function ProfileController($sessionStorage,api,Timeline, About,Teams, Roles,
+                             msApi,$mdpDatePicker, $mdpTimePicker,$mdDialog, $mdMedia)
     {
         var vm = this;
-        vm.basicForm = {};
-        vm.basicForm.birthDay = '';
-        vm.basicForm.roles = ['Manager', 'Developer'];
-        vm.basicForm.teams = [{name:'FirstTeam'},{name: 'SecondTeam'}, {name:'Supermens'}];
 
-      
         // Data
         vm.posts = []; //Timeline.posts;
         vm.activities = []; //Timeline.activities;
         vm.about = About.data;
-        vm.user = $localStorage.user;
-
-        vm.basicForm.firstname = vm.user.firstName || '';
-        vm.basicForm.lastname = vm.user.lastName || '';
-        vm.basicForm.email = vm.user.email || '';
-
+        vm.profileForm = {};
+        vm.profileForm.user = {};
+        vm.roles = Roles.data.roles;
+        vm.teams = Teams.data.teams;
+        getUserById($sessionStorage.user.id);
+        console.log('in profile controller user after request is');
+   
         console.log('in profile controller ');
-        console.log('user in localStorage is: ');
-        console.log(vm.user);
-        // vm.basicForm.birthDay = new Date();
-        // vm.photosVideos = PhotosVideos.data;
-
+        console.log('user in sessionStorage is: ');
+        console.log($sessionStorage.user);
+ 
         // Methods
-    //     msApi.request('profile.userData@get', {id: vm.user.id}, 
-    //         // SUCCESS
-    //         function (response){
-    //             console.log('in profile userData request');
-    //             console.log('user id is: ' + vm.user);
-    //             if(response.status){  
-    //                 vm.disabled = false;
-    //                 $localStorage.user = response.data.user;
-    //                 console.log( $localStorage.user);
-                   
-    //                 // vm.form = {};
-    //             };
-    //             console.log('Server respond with data: ' + response.data);
-    //         }, 
-    //         // ERROR
-    //         function (response){
-    //             vm.error = true;
-    //             vm.errorMessage = "Invalid username and/or password";
-    //             vm.disabled = false;
-    //             vm.loginForm = {};
-    //             console.error('Error in login ctrl and data: ' + response.status);
-    //    });
+       getUserById($sessionStorage.user.id); 
+       vm.submit = submit;
+
+
+function getUserById(userId){
+
+        api.users.getById.get({'id': userId},
+        // Success
+        function (response)
+        {   
+            console.log('Respnse is: ');
+            console.log(response.data.user);
+            vm.profileForm.user = response.data.user;
+            vm.profileForm.user.lastName = response.data.user.secondName;
+            //return response;
+        },
+        // Error
+        function (response)
+        {
+            console.error(response);
+        }
+    );
+}
+
+     function submit(){
+           var userData = {user : vm.profileForm.user}
+           api.users.user.update({id:vm.profileForm.user.id}, userData, function(updatedUser, second){
+               if(updatedUser.status){
+                    $mdDialog.show(
+                        $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title('OK!')
+                            .textContent('Your profile data has been successfully updated')
+                            .ariaLabel('Success!')
+                            .ok('Got it!')   
+                    );
+               }
+               
+               console.log(second);     
+           });
+     }
+   
         //////////
     }
 

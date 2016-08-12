@@ -80,7 +80,11 @@ module.exports = {
                 } 
             sails.log.info(user);
             if(user){
-                res.json(user.toJSON())
+                res.json({
+                    data: {
+                       user: user.toJSON()
+                    }
+                })
             } else {
                 res.json({message:"No user found"})
             }
@@ -111,7 +115,7 @@ module.exports = {
     update: function(req, res) {
             var userId = req.param('id');
             var user = req.body.user;
-            sails.log.info('user update cntl, userid is: ' + userId + "user is: " + JSON.stringify(user));
+            sails.log.info('user update cntl, userId is: ' + userId + " user is: " + JSON.stringify(user));
             sails.log.info(req.body);
             User.update(userId, user).exec(function (err, updatedUser) {
                 if (err) {
@@ -120,8 +124,11 @@ module.exports = {
                 sails.log.info(updatedUser);
                 if(updatedUser){
                     res.send(200,{
-                        message: 'Successfuly updated user', 
-                        user: updatedUser
+                        status: 'success', 
+                        data: {
+                            message: 'Successfuly updated user',
+                            user: updatedUser
+                        }
                     });
                 }   
         }); 

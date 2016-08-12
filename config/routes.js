@@ -51,7 +51,7 @@ module.exports.routes = {
        view: 'login'
   },
 
-  'post /login': 'AuthController.login',
+  'post /api/login': 'AuthController.login',
 
   '/logout': 'AuthController.logout',
 
@@ -65,35 +65,35 @@ module.exports.routes = {
  */
 
  // NEW USER FORM 
- 'get /users/new' : {
+ 'get /api/users/new' : {
    view : 'user/new'
  },
  // CREATE 
- 'post /users': 'UserController.create',
+ 'post /api/users': 'UserController.create',
 
  // SHOW ONE 
-  // 'get /users/:id' : 'UserController.show',
+  // 'get /api/users/:id' : 'UserController.show',
   // the same as above but use json for SPA
-   'get /users/:id' : 'UserController.findOne',
+   'get /api/users/:id' : 'UserController.findOne',
 
 
  // EDIT FORM
- 'get /users/:id/edit' : 'UserController.edit',
+ 'get /api/users/:id/edit' : 'UserController.edit',
   // DESTROY
- 'delete /users/:id' : 'UserController.destroy',
+ 'delete /api/users/:id' : 'UserController.destroy',
  // UPDATE
- 'put /users/:id' : 'UserController.update',
+ 'put /api/users/:id' : 'UserController.update',
 
 // get login status for front end auth logic
-'get /users/status' : 'UserController.getLoginStatus',
+  'get /api/users/status' : 'UserController.getLoginStatus',
 
  // UPLOAD AVATAR
- 'post /users/:id/avatar' : 'UserController.uploadAvatar',
+ 'post /api/users/:id/avatar' : 'UserController.uploadAvatar',
  // GET AVATAR
- 'get /users/:id/avatar' : 'UserController.avatar',
+ 'get /api/users/:id/avatar' : 'UserController.avatar',
 
   // GET JSON 
- 'get /users.json' : 'UserController.getUsersJson',
+ 'get /api/users.json' : 'UserController.getUsersJson',
 
 
 /** 
@@ -101,24 +101,40 @@ module.exports.routes = {
  */
 
 // CREATE 
-'get /users/:user_id/activities/new' :  'ActivityController.new',
-'post /users/:user_id/activities' : 'ActivityController.create', 
-'post /activities' : 'ActivityController.create', 
+'get  /api/users/:user_id/activities/new' :  'ActivityController.new',
+'post /api/users/:user_id/activities' : 'ActivityController.create', 
+'post /api/activities' : 'ActivityController.create', 
 
 
 // READ
-'get /users/:user_id/activities' : 'ActivityController.find', 
-'get /users/:user_id/activities/:id' : 'ActivityController.findOne', 
+'get /api/users/:user_id/activities' : 'ActivityController.find', 
+'get /api/users/:user_id/activities/:id' : 'ActivityController.findOne', 
 
 // EDIT
-'get /users/:user_id/activities/:id/edit' : 'ActivityController.edit',
-'put /users/:user_id/activities/:id' : 'ActivityController.update',
+'get /api/users/:user_id/activities/:id/edit' : 'ActivityController.edit',
+'put /api/users/:user_id/activities/:id' : 'ActivityController.update',
 
 // DELETE 
-'delete /users/:user_id/activities/:id/' : 'ActivityController.destroy',
+'delete /api/users/:user_id/activities/:id/' : 'ActivityController.destroy',
 
 // FIND ALL
-'get /activities.json' : 'ActivityController.index', 
 
+'get /api/activities' : 'ActivityController.index', 
+
+
+/** 
+ * Team controller ROUTES
+ */
+'get /api/teams' : 'TeamController.index', 
+
+'post /api/teams': 'TeamController.create',
+
+
+/** 
+ * UserRole controller ROUTES
+ */
+'get /api/roles' : 'UserRoleController.index', 
+
+'post /api/roles': 'UserRoleController.create',
 
 };

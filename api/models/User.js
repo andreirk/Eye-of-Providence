@@ -17,7 +17,7 @@ module.exports = {
           type: 'string',
          
         },
-      secondName: {
+      surName: {
           type: 'string',
          
         },
@@ -25,6 +25,9 @@ module.exports = {
           type: 'string',
           defaultsTo : ''
         },
+      birthDay: {
+          type: 'date'
+      },
       email: {
           type: 'string',
           email: true,

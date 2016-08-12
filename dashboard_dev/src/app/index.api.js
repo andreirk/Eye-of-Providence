@@ -182,6 +182,35 @@
 
         // api.sample = $resource(api.baseUrl + 'sample/sample.json');
 
+// USER API
+        api.users = {
+                list     : $resource('/api/users.json'),
+                getById  : $resource('/api/users/:id', {id: '@id'}),
+                user     : $resource('/api/users/:id', null,
+                      {
+                           update: { method : 'PUT'}
+                      }
+                ),   
+        };
+
+// TEAM API
+        api.teams = {
+                list     : $resource('/api/teams'),
+                getById  : $resource('/api/teams/:id', {id: '@id'}),       
+        };
+
+// ROLE API
+        api.roles = {
+                list     : $resource('/api/roles'),
+                getById  : $resource('/api/:id', {id: '@id'}),
+        };
+
+// ACTIVITY API
+        api.activities = {
+                list     : $resource('/api/activities'),
+                getById  : $resource('/api/:id', {id: '@id'}),
+        };        
+
         return api;
     }
 

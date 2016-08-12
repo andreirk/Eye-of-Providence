@@ -4,20 +4,20 @@
         <!-- BASIC FORM -->
         <div class="form-wrapper md-whiteframe-1dp" flex="60">
 
-            <form name="basicForm" class="md-form" novalidate>
+            <form name="basicForm" class="md-form" novalidate ng-submit="vm.submit()">
 
                 <div class="form-title">Edit your profile data</div>
 
                 <div layout="column" layout-gt-sm="row">
                     <md-input-container flex>
                          <label>Firstname</label>
-                        <input type="text" name="firstname" ng-model="vm.basicForm.firstname"
-                                placeholder="{{vm.basicForm.firstname}}"
+                        <input type="text" name="firstName" ng-model="vm.profileForm.user.firstName"
+                                placeholder="{{vm.profileForm.user.firstName}}"
                                 required>
-                        <div ng-messages="basicForm.firstname.$error"
+                        <div ng-messages="basicForm.firstName.$error"
                                 role="alert">
                             <div ng-message="required">
-                                <span>Firstname field is required.</span>
+                                <span>FirstName field is required.</span>
                             </div>
                         </div>
                     </md-input-container>
@@ -26,8 +26,8 @@
                 <div layout="column" layout-gt-sm="row">
                     <md-input-container flex>
                         <label>Lastname</label>
-                        <input type="text" name="lastname" ng-model="vm.basicForm.lastname" 
-                                placeholder="{{vm.basicForm.lastname}}"
+                        <input type="text" name="lastname" ng-model="vm.profileForm.user.lastName" 
+                                placeholder="{{vm.profileForm.user.lastName}}"
                                 required>
                         <div ng-messages="basicForm.lastname.$error"
                                 role="alert">
@@ -40,8 +40,8 @@
                 <div layout="column" layout-gt-sm="row">
                     <md-input-container flex>
                         <label>Patronym name</label>
-                        <input type="text" name="patronymName" ng-model="vm.basicForm.patronymName" 
-                                placeholder="{{vm.basicForm.patronymName}}"
+                        <input type="text" name="patronymName" ng-model="vm.profileForm.user.patronymName" 
+                                placeholder="{{vm.profileForm.user.patronymName}}"
                                 >
                     </md-input-container>
                 </div>
@@ -51,8 +51,8 @@
               
                     <md-input-container style="margin-right: 10px;">
                         <label>Role</label>
-                        <md-select ng-model="vm.basicForm.roles">
-                        <md-option ng-repeat="role in vm.basicForm.roles" value="{{role}}">{{role}}</md-option>
+                        <md-select ng-model="vm.profileForm.user.roles">
+                              <md-option ng-repeat="role in vm.roles" value="{{role.id}}">{{role.name}}</md-option>
                         </md-select>
                 </md-input-container>
               </div>
@@ -61,10 +61,8 @@
                   
                    <md-input-container>
                    <label>Teams</label>
-                        <md-select ng-model="vm.basicForm.teams" multiple>
-                            <md-optgroup label="Meats">
-                                <md-option  ng-repeat="team in vm.basicForm.teams">{{team.name}}</md-option>
-                            </md-optgroup>
+                        <md-select ng-model="vm.profileForm.user.teams" multiple>
+                                <md-option  ng-repeat="team in vm.teams" value="{{team.id}}">{{team.name}}</md-option>
                         </md-select>
                     </md-input-container>
               </div>
@@ -73,14 +71,15 @@
                 <md-input-container class="md-block">
                 <!-- Use floating placeholder instead of label -->
                  <label>Email</label>
-                <input ng-model="vm.basicForm.email" type="email" placeholder="{{vm.basicForm.email}}" ng-required="true">
+                <input ng-model="vm.profileForm.user.email" type="email" placeholder="{{vm.profileForm.user.email}}" ng-required="true">
                 </md-input-container>
              </div>
 
             <md-input-container flex-gt-md="30" class="md-block"> 
             <label>Birthday</label>
-            <mdp-date-picker name="minMaxDate" mdp-placeholder="Date" mdp-min-date="'1930-01-01'" value='{{vm.basicForm.birthDay}}'
-            mdp-max-date="'2005-01-01'" ng-model="vm.basicForm.birthDay">
+            </md-input-container>
+            <mdp-date-picker name="minMaxDate" mdp-placeholder="Date" mdp-min-date="'1930-01-01'" value='{{vm.profileForm.user.birthDay}}'
+            mdp-max-date="'2005-12-31'" ng-model="vm.profileForm.user.birthDay">
                 <div ng-messages="demoForm.minMaxDate.$error">
                   <div ng-message="required">This is required</div>
                   <div ng-message="format">Invalid format</div>
@@ -88,24 +87,22 @@
                   <div ng-message="maxDate">Max date</div>
                 </div>
               </mdp-date-picker>
-            </md-input-container>
            
             <md-input-container  class="md-block">
-            <label> Work day begins (according to the Schedule)  at: </label>              
-              <mdp-time-picker mdp-auto-switch="true" ng-model="currentTime"></mdp-time-picker>
+                <label> Work day begins (according to the Schedule)  at: </label>              
             </md-input-container>
+            <mdp-time-picker mdp-auto-switch="true" ng-model="vm.profileForm.user.beginWork"></mdp-time-picker>
    
              <md-input-container class="md-block" >
                 <label>Work day ends (according to the Schedule)  at:</label>
-                  <mdp-time-picker mdp-auto-switch="true" ng-model="currentTime"></mdp-time-picker>
              </md-input-container>
+             <mdp-time-picker mdp-auto-switch="true" ng-model="vm.profileForm.user.endWork"></mdp-time-picker>
 
             <md-button type="submit" class="md-raised md-accent" aria-label="Submit"
                         ng-disabled="basicForm.$invalid || basicForm.$pristine">
                 Submit
             </md-button>
             </form>
-
         </div>
         <!-- / BASIC FORM -->
 
@@ -113,7 +110,9 @@
             <div class="form-wrapper form-data-wrapper md-whiteframe-1dp" flex="40">
                 <div class="form-title">Form ng-model data for TEST </div>
                 <div class="json-data-wrapper">
-                    <pre>{{vm.basicForm | json}}</pre>
+                    <pre>{{vm.profileForm.user | json}}</pre>
+                    <pre>{{vm.teams | json}}</pre>
+                    <pre>{{vm.roles | json}}</pre>
                 </div>
             </div>
             <!-- / BASIC FORM DATA -->

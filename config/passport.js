@@ -32,7 +32,7 @@ passport.use(new LocalStrategy({
           var returnUser = {
             email: user.email,
             createdAt: user.createdAt,
-            id: user.id
+            id: user.id,
           };
           return done(null, returnUser, {
             message: 'Logged In Successfully'

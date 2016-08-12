@@ -7,40 +7,40 @@
 
 module.exports = {
 
-	index: function(req,res){
-        Team.find().exec(function(err, teams) {
+	index: function(req, res){
+        UserRole.find().exec(function(err, roles) {
             if(err) throw err;
-            sails.log.info('in team controller teams are:');
-            sails.log.info(teams);
+            sails.log.info('in role controller roles are:');
+            sails.log.info(roles);
             res.json({
                 data: {
-                    teams: teams
+                    roles: roles
                 }
             });
         });
     },
 
     create: function(req, res) {
-        sails.log.info('Userteam create ctrl');
-        var teamData = req.body.team;
-        Team.create(teamData).exec(function(err, team) {
+        sails.log.info('UserRole create ctrl');
+        var roleData = req.body.role;
+        UserRole.create(roleData).exec(function(err, role) {
             if (err) {
                 return res.serverError(err);
             }
-            sails.log.info('team was created: '+ team.name);
+            sails.log.info('Role was created: '+ role.name);
 
-            Team.find().exec(function (err, teams) {
+            UserRole.find().exec(function (err, roles) {
                 if (err) {
                     return res.serverError(err);
                 }
                 res.ok({
-                    status: "Successfuly created team!",
+                    status: "Successfuly created role!",
                     data : {
-                        teams: teams
+                        roles: roles
                     }
             });
             });
         });    
-    },     	
+    },     
 };
 
