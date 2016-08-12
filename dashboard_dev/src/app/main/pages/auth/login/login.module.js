@@ -30,7 +30,7 @@
         msApiProvider.register('app.login', 
         [
         // url
-            '/login',
+            '/api/login',
         // paramDefaults
             null,
         // actions

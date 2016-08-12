@@ -28,7 +28,7 @@
         msApiProvider.register('app.register', 
         [
         // url
-            '/users',
+            '/api/users',
         // paramDefaults
             null,
         // actions
