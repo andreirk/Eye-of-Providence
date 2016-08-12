@@ -12,7 +12,7 @@
         var vm = this;
 
         // Data
-        vm.list = ActivityData.data.list;
+        vm.list = ActivityData.data.activities;
 
         // Methods
 

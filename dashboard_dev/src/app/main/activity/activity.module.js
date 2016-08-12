@@ -20,10 +20,11 @@
                     }
                 },
                 resolve: {
-                    ActivityData: function (msApi)
-                    {
-                        return msApi.resolve('activity@get');
-                    }
+                    ActivityData: function (apiResolver)
+                    {   
+                        return apiResolver.resolve('activities.list@get');
+                    },
+    
                 }
             });
 

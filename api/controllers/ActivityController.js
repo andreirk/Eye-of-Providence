@@ -48,7 +48,14 @@ module.exports = {
             }
             sails.log.info('found activities are: '+ activities);
 
-            return res.json(activities);
+            return res.json(
+                {
+                    data: {
+                        activities: activities
+                    }
+                }
+                    
+                    );
         });
     },  
 
@@ -61,7 +68,12 @@ module.exports = {
             }
             sails.log.info('found activities are: '+ activities);
 
-            return res.json(activities);
+            return res.json(
+                {
+                    data: {
+                        activities: activities
+                    }
+                });
         });
     },       
 
