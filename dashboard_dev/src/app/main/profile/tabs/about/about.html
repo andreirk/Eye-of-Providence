@@ -8,10 +8,14 @@
 
             <div class="content">
 
+                <div class="info-line">
+                    <div class="title" translate="PROFILE.NAME">Name </div>
+                    <div class="info">{{vm.user.fullName}}</div>
+                </div>
 
                 <div class="info-line">
                     <div class="title" translate="PROFILE.BIRTHDAY">Birthday</div>
-                    <div class="info">{{vm.user.birthday}}</div>
+                    <div class="info">{{vm.user.birthDay | date}}</div>
                 </div>
 
             </div>
@@ -25,7 +29,7 @@
             <div class="content">
                 <div class="info-line">
                     <div class="title" translate="PROFILE.OCCUPATION">Occupation</div>
-                    <div class="info">{{vm.user.role}}</div>
+                    <div class="info">{{vm.user.role.name}}</div>
                 </div>
 
                 <div class="info-line">
@@ -36,7 +40,7 @@
             </div>
         </div>
 
-        <div class="profile-box info-box contact md-whiteframe-1dp" layout="column">
+        <!--<div class="profile-box info-box contact md-whiteframe-1dp" layout="column">
             <header class="md-accent-bg">
                 <div class="title" translate="PROFILE.CONTACT">Contact</div>
             </header>
@@ -47,27 +51,27 @@
                 </div>
 
                 <div class="info-line">
-                    <div class="title" translate="PROFILE.ADDRESS">Skype</div>
+                    <div class="title" >Skype</div>
                     <div class="info">{{vm.user.contact.skype}}</div>
                 </div>
                 <div class="info-line">
-                    <div class="title" translate="PROFILE.ADDRESS">Twitter</div>
+                    <div class="title" >Twitter</div>
                     <div class="info">{{vm.user.contact.twitter}}</div>
                 </div>
                 <div class="info-line">
-                    <div class="title" translate="PROFILE.ADDRESS">Facebook</div>
+                    <div class="title" >Facebook</div>
                     <div class="info">{{vm.user.contact.facebook}}</div>
                 </div>
                 <div class="info-line">
-                    <div class="title" translate="PROFILE.ADDRESS">LinkedIn</div>
+                    <div class="title" >LinkedIn</div>
                     <div class="info">{{vm.user.contact.linkedin}}</div>
                 </div>
                 <div class="info-line">
-                    <div class="title" translate="PROFILE.ADDRESS">Google + </div>
+                    <div class="title" >Google + </div>
                     <div class="info">{{vm.user.contact.google_plus}}</div>
                 </div>
                 <div class="info-line">
-                    <div class="title" translate="PROFILE.ADDRESS">VK </div>
+                    <div class="title" >VK </div>
                     <div class="info">{{vm.user.contact.vk}}</div>
                 </div>
                 <div class="info-line">
@@ -79,15 +83,15 @@
 
                 <div class="info-line">
                     <div class="title" translate="PROFILE.EMAILS">Emails</div>
-                    <div class="info" ng-repeat="email in vm.about.contact.emails">
-                        <span>{{email}}</span>
+                    <div class="info">
+                        <span>{{vm.user.email}}</span>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
 
-    <div class="about-sidebar" layout="column" flex="100" flex-gt-sm="50" flex-gt-md="35">
+    <!--<div class="about-sidebar" layout="column" flex="100" flex-gt-sm="50" flex-gt-md="35">
 
         <div class="profile-box friends md-whiteframe-1dp" layout="column">
             <header class="md-accent-bg" layout="row" layout-align="space-between center">
@@ -105,6 +109,6 @@
             </div>
         </div>
 
-    </div>
+    </div>-->
 
 </div>

@@ -21,6 +21,7 @@
         vm.roles = Roles.data.roles;
         vm.teams = Teams.data.teams;
         getUserById($sessionStorage.user.id);
+        vm.profileForm.user.role = $sessionStorage.user.role || {};
         console.log('in profile controller user after request is');
    
         console.log('in profile controller ');
@@ -37,23 +38,28 @@ function getUserById(userId){
         api.users.getById.get({'id': userId},
         // Success
         function (response)
-        {   
-            console.log('Respnse is: ');
-            console.log(response.data.user);
-            $sessionStorage.user = response.data.user;
-            vm.profileForm.user = response.data.user;
-            vm.profileForm.user.lastName = response.data.user.secondName;
-            //return response;
-        },
-        // Error
-        function (response)
-        {
-            console.error(response);
-        }
+            {   
+                console.log('Respnse is: ');
+                console.log(response.data.user);
+                $sessionStorage.user = response.data.user;
+                vm.user = response.data.user;
+               
+                vm.profileForm.user = response.data.user;
+                vm.profileForm.user.lastName = response.data.user.secondName;
+           //     vm.user.role.name = Roles.data.roles[vm.user.role.id]
+                //return response;
+            },
+            // Error
+            function (response)
+            {
+                console.error(response);
+            }
+        
     );
 }
 
      function submit(){
+           
            var userData = {user : vm.profileForm.user}
            api.users.user.update({id:vm.profileForm.user.id}, userData, function(updatedUser, second){
                if(updatedUser.status){
@@ -66,8 +72,9 @@ function getUserById(userId){
                             .ariaLabel('Success!')
                             .ok('Got it!')   
                     );
-               }
-               
+                    // update user in ctrl
+                    getUserById(vm.profileForm.user.id);
+               }      
                console.log(second);     
            });
      }

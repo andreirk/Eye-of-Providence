@@ -38,6 +38,8 @@
         "EMAILS": "Emails",
         "TEAMMATES": "Teammates",
         "SEE": "See",
-        "JOINED_GROUPS": "Joined Groups"
+        "JOINED_GROUPS": "Joined Groups",
+        "NAME": "Name"
+
     }
 }

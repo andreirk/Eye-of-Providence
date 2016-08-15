@@ -6,7 +6,7 @@
             <img class="profile-image avatar huge" src="assets/images/avatars/katherine.jpg">
 
             <div class="name">
-                {{vm.user.firstName && vm.user.lastName ? "vm.user.firstName" +" "+"vm.user.lastName" : 'User without name'}}
+                {{vm.user.fullName ? vm.user.fullName : 'User without name'}}
             </div>
         </div>
 

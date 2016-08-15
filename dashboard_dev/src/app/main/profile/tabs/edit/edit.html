@@ -26,8 +26,8 @@
                 <div layout="column" layout-gt-sm="row">
                     <md-input-container flex>
                         <label>Lastname</label>
-                        <input type="text" name="lastname" ng-model="vm.profileForm.user.lastName" 
-                                placeholder="{{vm.profileForm.user.lastName}}"
+                        <input type="text" name="lastname" ng-model="vm.profileForm.user.surName" 
+                                placeholder="{{vm.profileForm.user.surName}}"
                                 required>
                         <div ng-messages="basicForm.lastname.$error"
                                 role="alert">
@@ -51,8 +51,8 @@
               
                     <md-input-container style="margin-right: 10px;">
                         <label>Role</label>
-                        <md-select ng-model="vm.profileForm.user.roles">
-                              <md-option ng-repeat="role in vm.roles" value="{{role.id}}">{{role.name}}</md-option>
+                        <md-select ng-model="vm.profileForm.user.role.name">
+                              <md-option ng-repeat="role in vm.roles"  value="{{role.name}}">{{role.name}}</md-option>
                         </md-select>
                 </md-input-container>
               </div>
