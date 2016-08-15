@@ -81,7 +81,7 @@ module.exports = {
        */
 
        getFullName :  function() {
-        return _.compact([this.firstName, this.secondName, this.patronymName ]).join(' ');      
+        return _.compact([this.firstName, this.patronymName, this.surName]).join(' ');      
       },
 
       /**
