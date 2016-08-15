@@ -13,7 +13,7 @@
 
        msApiProvider.register('app.logout', 
         [
-            '/logout',        
+            '/api/logout',        
         ]);        
     }
 })();

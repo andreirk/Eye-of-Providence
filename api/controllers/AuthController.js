@@ -42,6 +42,7 @@ module.exports = {
 
     logout: function(req, res) {
         req.logout();
+        sails.log.info('Logging out');
         res.ok({status: 'Successfuly logged out'});
     }
 };

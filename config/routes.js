@@ -53,7 +53,7 @@ module.exports.routes = {
 
   'post /api/login': 'AuthController.login',
 
-  '/logout': 'AuthController.logout',
+  '/api/logout': 'AuthController.logout',
 
   'get /signup': {
     view: 'signup'

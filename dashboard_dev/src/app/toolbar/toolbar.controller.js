@@ -7,7 +7,9 @@
         .controller('ToolbarController', ToolbarController);
 
     /** @ngInject */
-    function ToolbarController($rootScope,$scope, $q, $state, $timeout, $mdSidenav, $translate, $mdToast, $location,$localStorage, msNavigationService, msApi)
+    function ToolbarController($rootScope,$scope, $q, $state, $timeout, $mdSidenav, 
+                                $translate, $mdToast, $location,$sessionStorage, 
+                                msNavigationService, msApi)
     {
         var vm = this;
 
@@ -16,7 +18,7 @@
             search: ''
         };
 
-        vm.user =  $localStorage.user;
+        vm.user =  $sessionStorage.user;
 
         vm.bodyEl = angular.element('body');
         vm.userStatusOptions = [
@@ -122,7 +124,8 @@
             // SUCCESS
             function (response){
                 if(response.status){
-                    $location.path('/pages/login');
+                    $sessionStorage.user = {};
+                    $location.path('/login');
                    
                 };
                 console.log('Server respond with data: ' + response.status);
