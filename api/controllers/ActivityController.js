@@ -19,7 +19,7 @@ module.exports = {
     // CREATE ACTION
     create: function (req, res) {
         var userId = req.param('user_id'),
-            activityData = req.body;
+            activityData = req.body.activity;
 
         activityData.author = userId || activityData.author;
 
@@ -62,7 +62,9 @@ module.exports = {
     //  All activities ACTION
     index: function (req, res) {
         sails.log.info('in activities index');
-        Activity.find().exec(function (err, activities) {
+        Activity.find()
+        .populate('author')
+        .exec(function (err, activities) {
             if(err){
                  return res.serverError(err);
             }

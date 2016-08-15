@@ -1,7 +1,34 @@
 
-<ul>
-    <li ng-repeat="activity in vm.list">
-       Title: {{activity.title}} <br>
-       Description: {{activity.description}}
-    </li>
-</ul>
+  <div flex-gt-sm="98" flex>
+    <md-toolbar layout="row" class="md-hue-3">
+      <div class="md-toolbar-tools">
+        <span>Activities</span>
+      </div>
+    </md-toolbar>
+    <md-content>
+      <md-list flex>
+      
+        <md-list-item class="md-3-line" ng-repeat="activity in vm.list" ng-click="null">
+          
+          <div class="md-list-item-text" layout="column">
+            <h3>{{ activity.author.firstName + " " + activity.author.secondName }}</h3>
+            <h4> {{ activity.title }}</h4>
+            <p>{{ activity.description }}</p>
+          </div>
+        </md-list-item>
+        <md-divider ></md-divider>
+
+
+      </md-list>
+    </md-content>
+  </div>
+
+
+    <!-- BASIC FORM DATA -->
+    <!--<div class="form-wrapper form-data-wrapper md-whiteframe-1dp" flex="40">
+        <div class="form-title">Form ng-model data for TEST </div>
+        <div class="json-data-wrapper">
+            <pre>{{ vm.list | json}}</pre>
+        </div>
+    </div>-->
+    <!-- / BASIC FORM DATA -->
