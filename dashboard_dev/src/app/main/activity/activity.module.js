@@ -35,13 +35,13 @@
         msApiProvider.register('activity', ['app/data/activity/activity.json']);
 
         // Navigation
-        msNavigationServiceProvider.saveItem('EOP', {
-            title : 'ACTIVITY',
-            group : true,
-            weight: 2
-        });
+        // msNavigationServiceProvider.saveItem('EOP', {
+        //     title : 'ACTIVITY',
+        //     group : true,
+        //     weight: 2
+        // });
 
-        msNavigationServiceProvider.saveItem('EOP.activity', {
+        msNavigationServiceProvider.saveItem('activity', {
             title    : 'Activity',
             icon     : 'icon-tile-four',
             state    : 'app.activity',
@@ -49,7 +49,7 @@
                 'param1': 'page'
              },*/
             translate: 'ACTIVITY.ACTIVITY_NAV',
-            weight   : 1
+            weight   : 3
         });
     }
 })();

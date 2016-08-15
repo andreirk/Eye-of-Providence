@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('app.pages.profile')
+        .module('app.profile')
         .controller('ProfileController', ProfileController);
 
     /** @ngInject */
@@ -40,6 +40,7 @@ function getUserById(userId){
         {   
             console.log('Respnse is: ');
             console.log(response.data.user);
+            $sessionStorage.user = response.data.user;
             vm.profileForm.user = response.data.user;
             vm.profileForm.user.lastName = response.data.user.secondName;
             //return response;

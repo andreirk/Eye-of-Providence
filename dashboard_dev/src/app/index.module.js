@@ -20,10 +20,15 @@
             // Quick panel
             'app.quick-panel',
 
-            // Sample - Activity
+            'app.auth.login',
+            'app.auth.register',
+
+            //  Activity
             'app.activity',
 
             // Pages
-            'app.pages',
+         //   'app.pages',
+            // Profile
+            'app.profile',
         ]);
 })();

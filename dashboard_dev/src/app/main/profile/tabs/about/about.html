@@ -7,28 +7,13 @@
             </header>
 
             <div class="content">
-                <div class="info-line">
-                    <div class="title" translate="PROFILE.GENDER">Gender</div>
-                    <div class="info">{{vm.about.general.gender}}</div>
-                </div>
+
 
                 <div class="info-line">
                     <div class="title" translate="PROFILE.BIRTHDAY">Birthday</div>
-                    <div class="info">{{vm.about.general.birthday}}</div>
+                    <div class="info">{{vm.user.birthday}}</div>
                 </div>
 
-                <div class="info-line">
-                    <div class="title" translate="PROFILE.LOCATIONS">Locations</div>
-                    <div class="info location" ng-repeat="location in vm.about.general.locations">
-                        <span>{{location}}</span>
-                        <md-icon md-font-icon="icon-map-marker" class="s16"></md-icon>
-                    </div>
-                </div>
-
-                <div class="info-line">
-                    <div class="title" translate="PROFILE.ABOUT_ME">About Me</div>
-                    <div class="info">{{vm.about.general.about}}</div>
-                </div>
             </div>
         </div>
 
@@ -40,23 +25,14 @@
             <div class="content">
                 <div class="info-line">
                     <div class="title" translate="PROFILE.OCCUPATION">Occupation</div>
-                    <div class="info">{{vm.about.work.occupation}}</div>
+                    <div class="info">{{vm.user.role}}</div>
                 </div>
 
                 <div class="info-line">
                     <div class="title" translate="PROFILE.SKILLS">Skills</div>
-                    <div class="info">{{vm.about.work.skills}}</div>
+                    <div class="info">{{vm.user.skills}}</div>
                 </div>
 
-                <div class="info-line">
-                    <div class="title" translate="PROFILE.JOBS">Jobs</div>
-                    <table class="info jobs">
-                        <tr class="job" ng-repeat="job in vm.about.work.jobs">
-                            <td class="company">{{job.company}}</td>
-                            <td class="date">{{job.date}}</td>
-                        </tr>
-                    </table>
-                </div>
             </div>
         </div>
 
@@ -67,20 +43,40 @@
             <div class="content">
                 <div class="info-line">
                     <div class="title" translate="PROFILE.ADDRESS">Address</div>
-                    <div class="info">{{vm.about.contact.address}}</div>
+                    <div class="info">{{vm.user.contact.address}}</div>
+                </div>
+
+                <div class="info-line">
+                    <div class="title" translate="PROFILE.ADDRESS">Skype</div>
+                    <div class="info">{{vm.user.contact.skype}}</div>
+                </div>
+                <div class="info-line">
+                    <div class="title" translate="PROFILE.ADDRESS">Twitter</div>
+                    <div class="info">{{vm.user.contact.twitter}}</div>
+                </div>
+                <div class="info-line">
+                    <div class="title" translate="PROFILE.ADDRESS">Facebook</div>
+                    <div class="info">{{vm.user.contact.facebook}}</div>
+                </div>
+                <div class="info-line">
+                    <div class="title" translate="PROFILE.ADDRESS">LinkedIn</div>
+                    <div class="info">{{vm.user.contact.linkedin}}</div>
+                </div>
+                <div class="info-line">
+                    <div class="title" translate="PROFILE.ADDRESS">Google + </div>
+                    <div class="info">{{vm.user.contact.google_plus}}</div>
+                </div>
+                <div class="info-line">
+                    <div class="title" translate="PROFILE.ADDRESS">VK </div>
+                    <div class="info">{{vm.user.contact.vk}}</div>
                 </div>
                 <div class="info-line">
                     <div class="title" translate="PROFILE.TEL">Tel.</div>
-                    <div class="info" ng-repeat="tel in vm.about.contact.tel">
+                    <div class="info" ng-repeat="tel in vm.user.contact.tel">
                         <span>{{tel}}</span>
                     </div>
                 </div>
-                <div class="info-line">
-                    <div class="title" translate="PROFILE.WEBSITE">Website</div>
-                    <div class="info" ng-repeat="website in vm.about.contact.websites">
-                        <span>{{website}}</span>
-                    </div>
-                </div>
+
                 <div class="info-line">
                     <div class="title" translate="PROFILE.EMAILS">Emails</div>
                     <div class="info" ng-repeat="email in vm.about.contact.emails">

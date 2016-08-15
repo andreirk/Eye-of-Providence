@@ -3,39 +3,35 @@
     'use strict';
 
     angular
-        .module('app.pages.auth.login')
-        .controller('LoginController', LoginController);
+        .module('app.auth.register')
+        .controller('RegisterController', RegisterController);
 
     /** @ngInject */
-    function LoginController(msApi,$sessionStorage, $location)
+    function RegisterController(msApi, $location)
     {
         var vm = this;
         // Data
 
         // Methods
-      vm.login = function () {
+      vm.register = function () {
 
       vm.error = false;
       vm.disabled = true;
      
-     var loginParams = {
+     var registerParams = {
          email: vm.form.email,
          password: vm.form.password
      }
 
-      msApi.request('app.login@login', loginParams, 
+      msApi.request('app.register@register', registerParams, 
       // SUCCESS
       function (response){
-          if(response.status){  
+          if(response.status){
+            $location.path('/login');
             vm.disabled = false;
-            $sessionStorage.user = response.data.user;
-            console.log('in login ctrl local storage user is:')
-            console.log( $sessionStorage.user);
-            $location.path('/pages/profile');
             // vm.form = {};
           };
-    
-          //console.log('Server respond with data: ' + response.data);
+          console.log('Server respond with data: ' + response.status);
       }, 
       // ERROR
       function (response){
@@ -43,7 +39,7 @@
           vm.errorMessage = "Invalid username and/or password";
           vm.disabled = false;
           vm.loginForm = {};
-          console.error('Error in login ctrl and data: ' + response.status);
+          console.error('Error in register ctrl and data: ' + response.status);
       });
 
     //   AuthService.login(vm.loginForm.email, vm.loginForm.password)
@@ -62,6 +58,7 @@
     //     });
 
     };
+
         //////////
     }
 })();
