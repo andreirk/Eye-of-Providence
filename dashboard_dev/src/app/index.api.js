@@ -207,8 +207,13 @@
 
 // ACTIVITY API
         api.activities = {
-                list     : $resource('/api/activities'),
-                getById  : $resource('/api/:id', {id: '@id'}),
+                list       : $resource('/api/activities'),
+                getById    : $resource('/api/activities/:id', {id: '@id'}),
+                activity   : $resource('/api/activities/', null,
+                        {
+                            add: {method: 'POST'}
+                        }
+                ),
         };        
 
         return api;

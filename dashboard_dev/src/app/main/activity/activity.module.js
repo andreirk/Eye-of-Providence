@@ -7,7 +7,7 @@
         .config(config);
 
     /** @ngInject */
-    function config($stateProvider, $translatePartialLoaderProvider, msApiProvider, msNavigationServiceProvider)
+    function config($stateProvider, $translatePartialLoaderProvider, msApiProvider, msNavigationServiceProvider,$mdThemingProvider)
     {
         // State
         $stateProvider
@@ -51,5 +51,9 @@
             translate: 'ACTIVITY.ACTIVITY_NAV',
             weight   : 3
         });
+
+    $mdThemingProvider.theme('default')
+    .primaryPalette('indigo')
+
     }
 })();

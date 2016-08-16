@@ -30,7 +30,7 @@ module.exports = {
             sails.log.info('Activity was created: '+ createdActivity.title);
 
             return res.send(200, {
-                    code: 'successful',
+                    status: 'successful',
                     message: 'Activity was successfully created',
                     activity: createdActivity
                 });

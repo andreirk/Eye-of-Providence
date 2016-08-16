@@ -1,0 +1,50 @@
+#activity {
+
+    .header {
+        height: 200px;
+        min-height: 200px;
+        max-height: 200px;
+        background: url('/dashboard/assets/images/backgrounds/march.jpg') no-repeat 0 45%;
+        background-size: 100% auto;
+
+
+        .actions {
+
+            .md-button {
+                text-transform: none;
+                padding: 0 16px;
+                height: 32px;
+                line-height: 32px;
+                margin: 0 0 0 8px;
+            }
+        }
+    }
+
+    .content {
+
+        md-content {
+            background-color: transparent;
+        }
+    }
+
+}
+
+
+// RESPONSIVE
+@media screen and (max-width: $layout-breakpoint-sm) {
+
+    #activity {
+
+        .header {
+
+            .profile-image {
+                margin: 0 0 16px 0;
+            }
+
+            .name {
+                margin-bottom: 32px;
+            }
+        }
+    }
+
+}
