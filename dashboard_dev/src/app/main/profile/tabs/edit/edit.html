@@ -50,9 +50,9 @@
               <div layout="column" layout-gt-sm="row">
               
                     <md-input-container style="margin-right: 10px;">
-                        <label>Role</label>
-                        <md-select ng-model="vm.profileForm.user.role.name">
-                              <md-option ng-repeat="role in vm.roles"  value="{{role.name}}">{{role.name}}</md-option>
+                        <!--<label>Role</label>-->
+                        <md-select ng-model="vm.profileForm.user.role.name" placeholder="Role">
+                              <md-option ng-repeat="role in vm.roles track by $index"  value="{{role.name}}">{{role.name}}</md-option>
                         </md-select>
                 </md-input-container>
               </div>

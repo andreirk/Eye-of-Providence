@@ -19,6 +19,7 @@
         vm.profileForm = {};
         vm.profileForm.user = {};
         vm.roles = Roles.data.roles;
+        console.info(vm.roles);
         vm.teams = Teams.data.teams;
         getUserById($sessionStorage.user.id);
         vm.profileForm.user.role = $sessionStorage.user.role || {};
