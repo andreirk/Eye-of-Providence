@@ -10,6 +10,54 @@
  */
 var express = require('express');
 
+/** BEGIN ------------------- User activation thru mail ------------------------ */
+var activator = require('activator');
+var templates = __dirname+'/test/resources';
+var userModel = {
+      _find: function (login,cb) {
+        var found = null;
+        if (!login) {
+          cb("nologin");
+        } else if (users[login]) {
+          cb(null,_.cloneDeep(users[login]));
+        } else {
+          _.each(users,function (val) {
+            if (val && val.email === login) {
+              found = val;
+              return(false);
+            }
+          });
+          cb(null,_.cloneDeep(found));
+        }
+      },
+      find: function() {
+        this._find.apply(this,arguments);
+      },
+      activate: function (id,cb) {
+        if (id && users[id]) {
+          users[id].activated = true;
+          cb(null);
+        } else {
+          cb(404);
+        }
+      },
+      setPassword: function (id,password,cb) {
+        if (id && users[id]) {
+          users[id].password = password;
+          cb(null);
+        } else {
+          cb(404);
+        }
+      }
+    }
+
+var url = "smtps://falkonirk%40gmail.com:pass@smtp.gmail.com";   
+var activatorConfig = {user:userModel,url:url,templates:templates};
+    activator.init(activatorConfig);
+
+/** END ------------------- User activation thru mail ------------------------ */
+
+
 module.exports.http = {
 
   /****************************************************************************
