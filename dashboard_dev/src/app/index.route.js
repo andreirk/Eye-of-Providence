@@ -7,11 +7,13 @@
         .config(routeConfig);
 
     /** @ngInject */
-    function routeConfig($stateProvider, $urlRouterProvider, $locationProvider)
+    function routeConfig( $stateProvider, $urlRouterProvider, $locationProvider)
     {
         $locationProvider.html5Mode(true);
 
         $urlRouterProvider.otherwise('/auth/login');
+
+
 
         /**
          * Layout Style Switcher

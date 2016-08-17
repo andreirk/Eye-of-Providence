@@ -124,7 +124,7 @@
             // SUCCESS
             function (response){
                 if(response.status){
-                    $sessionStorage.user = {};
+                    $sessionStorage.user = null;
                     $location.path('/login');
                    
                 };

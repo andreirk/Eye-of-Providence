@@ -16,6 +16,7 @@
     /** @ngInject */
     function config($stateProvider, $translatePartialLoaderProvider, msApiProvider, msNavigationServiceProvider)
     {
+        
         $stateProvider.state('app.profile', {
             url      : '/profile',
             views    : {
