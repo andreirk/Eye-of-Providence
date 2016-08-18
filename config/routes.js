@@ -20,6 +20,8 @@
  * http://sailsjs.org/#!/documentation/concepts/Routes/RouteTargetSyntax.html
  */
 
+var activator = require('activator');
+
 module.exports.routes = {
 
   /***************************************************************************
@@ -31,6 +33,9 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
+
+
+
 
   '/': {
     view:  'homepage'
@@ -54,6 +59,12 @@ module.exports.routes = {
   'post /api/login': 'AuthController.login',
 
   '/api/logout': 'AuthController.logout',
+
+  '/api/create_activate': 'AuthController.createActivate',
+  '/api/complete_activate': 'AuthController.completeActivate',
+
+  // '/api/create_password_reset': 'AuthController.createPasswordReset',
+  // '/api/complete_password_reset': 'AuthController.completePasswordReset',
 
   'get /signup': {
     view: 'signup'
