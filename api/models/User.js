@@ -76,6 +76,22 @@ module.exports = {
           type: 'float'
         },
 
+      /** Fields to prosses activation */
+        
+      password_reset_code: {
+          type : 'string'
+        },
+      password_reset_time: {
+        type: 'integer',
+      }, 
+      activation_code: {
+          type : 'string'
+        }, 
+      
+      validated: {
+          type : 'boolean'
+        },         
+
       /**
        * Get user's full name
        */

@@ -7,13 +7,27 @@
         .run(runBlock);
 
     /** @ngInject */
-    function runBlock($rootScope, $timeout, $state)
+    function runBlock($sessionStorage, $rootScope, $timeout, $state)
     {
         // Activate loading indicator
-        var stateChangeStartEvent = $rootScope.$on('$stateChangeStart', function ()
+        var stateChangeStartEvent = $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams)
         {
             $rootScope.loadingProgress = true;
+            
+            // check if a user authorized
+            if(toState.name==='app.profile' && toState.name !=='app.auth_login' && !$sessionStorage.user){
+                event.preventDefault();
+                $state.go('app.auth_login');
+            }
+            
         });
+
+        // $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){ 
+        //     if(toState.name==='/profile' && toState.name !=='/login' && !$sessionStorage.user.id){
+        //         event.preventDefault();
+        //         $state.go('/login');
+        //     }
+        //  })
 
         // De-activate loading indicator
         var stateChangeSuccessEvent = $rootScope.$on('$stateChangeSuccess', function ()
